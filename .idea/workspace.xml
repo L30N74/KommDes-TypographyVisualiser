@@ -20,8 +20,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="546f2c6a-749b-49e0-8a83-4c5d55542612" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/TypographyVisualiser/static/css/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TypographyVisualiser/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TypographyVisualiser/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/TypographyVisualiser/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TypographyVisualiser/static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/TypographyVisualiser/static/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TypographyVisualiser/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/TypographyVisualiser/templates/home.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -66,7 +69,7 @@
       <workItem from="1589203201500" duration="57000" />
       <workItem from="1589203279227" duration="473000" />
       <workItem from="1589203766344" duration="8846000" />
-      <workItem from="1589367997764" duration="9754000" />
+      <workItem from="1589367997764" duration="14951000" />
     </task>
     <servers />
   </component>
@@ -84,5 +87,11 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="-1297" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1589384801101">
+      <screen x="-1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="-1297" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1589384801101" />
   </component>
 </project>

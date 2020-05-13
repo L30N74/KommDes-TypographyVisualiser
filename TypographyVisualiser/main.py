@@ -4,7 +4,7 @@ import requests
 import subprocess
 import pkg_resources
 
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 # importiere jedes Modul, das der Nutzer nicht hat, wir aber benötigen
 required = {'bs4', 'flask'}
@@ -36,28 +36,32 @@ app = Flask(__name__)
 
 @app.route('/')
 def start():
-    return "<h2>This is a Test</h2>"
+    return render_template('index.html')    # Nimm das Dokument home.html aus Ordner templates
 
 
-@app.route('/home')
-def home():
-    return render_template("home.html")
+@app.route('/DownloadImages', methods=['POST'])
+def test():
+    keyword = str(request.form.get('keyword', 0))
+    search(keyword)
+
+    return "Nothing"
 
 
-def search():
+def search(keyword):
     from bs4 import BeautifulSoup
 
-    query = input("Nach was möchtest du suchen? : ")
-
     # Such nach dem eingegebenen Begriff
-    searchurl = GOOGLE_IMAGE_URL + 'q=' + query
+    searchurl = GOOGLE_IMAGE_URL + 'q=' + keyword
 
     response = requests.get(searchurl, headers=USR_AGENT)
     html = response.text
 
     soup = BeautifulSoup(html, 'html.parser')
-    results = soup.findAll('img', {'class': 't0fcAb'}, limit=5)
+    download(keyword, soup, 5)
 
+
+def download(searchQuery, html, imageAmount):
+    results = html.findAll('img', {'class': 't0fcAb'}, limit=5)
 
     imageLinks = []
     for result in results:
@@ -68,7 +72,6 @@ def search():
     for link in imageLinks:
         print(link)
 
-
     # Erstelle einen Ordner, in den Bilder heruntergeladen werden
     if not os.path.exists(SAVE_FOLDER):
         os.mkdir(SAVE_FOLDER)
@@ -77,8 +80,9 @@ def search():
     for i, imageLink in enumerate(imageLinks):
         response = requests.get(imageLink)
 
-        imageName = SAVE_FOLDER + '/' + query + str(i+1) + '.jpg'
+        imageName = SAVE_FOLDER + '/' + searchQuery + str(i + 1) + '.jpg'
         with open(imageName, 'wb') as file:
+            print("Downloading...")
             file.write(response.content)
 
 

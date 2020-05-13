@@ -1,0 +1,38 @@
+<!Doctype html>
+<html>
+<head>
+    <title>Home</title>
+<!--    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"> &lt;!&ndash; In Flask müssen css Dateien in dem Ordner static sein. Hier wird dann die Referenz gelegt &ndash;&gt;-->
+</head>
+<body>
+    <main>
+        <section id="content header">
+            <h1>Typography Visualiser</h1>
+            <p id="log">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
+            </p>
+            <form method="post", id="form">
+                <label for="searchbar"></label>
+                <input type="text" id="searchbar">
+                <input type="submit" value="Suchen">
+            </form>
+        </section>
+        <section id="content images">
+
+        </section>
+    </main>
+
+<!--    jQuery und ajax zum abfangen des Absenden der Form-->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script>
+        $('#form').on('submit', function(e){
+            var term = $('#searchbar').val();                       // Inhalt des Eingabefelds zwischenspeichern
+            e.preventDefault();                                     // Leere Felder nicht zulassen
+            $.ajax({
+                url: 'http://localhost:5000/DownloadImages',        // Ziel festlegen (in main.py als app.route gesetzt)
+                data: {'keyword': term},                            // Nutzereingabe einpacken
+                method: 'POST'                                      // Methode festlegen
+            });
+        });
+    </script>
+</body>
+</html>
