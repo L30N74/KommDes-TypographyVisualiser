@@ -41,7 +41,8 @@ def start():
 
 @app.route('/home')
 def home():
-    return "Homepage"
+    return render_template("home.html")
+
 
 def search():
     from bs4 import BeautifulSoup
@@ -82,5 +83,5 @@ def search():
 
 
 if __name__ == "__main__":
-    # app.run(debug=True)
-    search()
+    app.run(debug=True)
+    # search()
