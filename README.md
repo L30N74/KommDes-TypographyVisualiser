@@ -15,7 +15,7 @@ ausgeführt werden.
 
 Liefert dieser Befehl folgendes Ergebnis, ist python installiert.
 
-![image-20200511155420353](D:\OneDrive - Hochschule Düsseldorf\6. Semester\KommDes-TypographyVisualiser\ressources\python install verification.jpg)
+![image-20200511155420353](TypographyVisualiser/resources/install verification.jpg)
 
 Wenn nicht, muss python vorerst über die [offizielle Python Webseite][1] heruntergeladen und installiert werden.
 
