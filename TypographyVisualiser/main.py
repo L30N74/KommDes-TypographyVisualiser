@@ -1,9 +1,13 @@
 import os
 import sys
+import cv2
+import numpy
+import urllib.request
+from matplotlib import pyplot
 import requests
 import subprocess
 import pkg_resources
-
+from bs4 import BeautifulSoup
 from flask import Flask, render_template, request
 
 # importiere jedes Modul, das der Nutzer nicht hat, wir aber benötigen
@@ -27,28 +31,24 @@ USR_AGENT = {
     'User-Agent': 'My User Agent 1.0',
 }
 
-SAVE_FOLDER = "images"
-
 ##############################################
 
 app = Flask(__name__)
 
+images = []
 
 @app.route('/')
 def start():
-    return render_template('index.html')    # Nimm das Dokument home.html aus Ordner templates
+    return render_template('index.html')  # Nimm das Dokument home.html aus Ordner templates
 
 
 @app.route('/DownloadImages', methods=['POST'])
-def test():
-    keyword = str(request.form.get('keyword', 0))
-    search(keyword)
+def search():
+    keyword = str(request.form.get('keyword'))
+    image_amount = int(request.form.get('amount'))
 
-    return "Nothing"
-
-
-def search(keyword):
-    from bs4 import BeautifulSoup
+    if keyword is None or image_amount is None:
+        return None
 
     # Such nach dem eingegebenen Begriff
     searchurl = GOOGLE_IMAGE_URL + 'q=' + keyword
@@ -57,11 +57,11 @@ def search(keyword):
     html = response.text
 
     soup = BeautifulSoup(html, 'html.parser')
-    download(keyword, soup, 5)
+    download(keyword, soup, image_amount)
 
 
 def download(searchQuery, html, imageAmount):
-    results = html.findAll('img', {'class': 't0fcAb'}, limit=5)
+    results = html.findAll('img', {'class': 't0fcAb'}, limit=imageAmount)
 
     imageLinks = []
     for result in results:
@@ -69,23 +69,36 @@ def download(searchQuery, html, imageAmount):
         parts = seperates[3].split('"')
         imageLinks.append(parts[1])
 
-    for link in imageLinks:
-        print(link)
+    print(len(imageLinks))
 
-    # Erstelle einen Ordner, in den Bilder heruntergeladen werden
-    if not os.path.exists(SAVE_FOLDER):
-        os.mkdir(SAVE_FOLDER)
+    imageFolder = "images/" + searchQuery
+    if not os.path.exists(imageFolder):
+        os.mkdir(imageFolder)
 
-    # Alle Links gefiltert -> Runterladen
-    for i, imageLink in enumerate(imageLinks):
-        response = requests.get(imageLink)
+    # Download image
+    for url in imageLinks:
+        # Anzahl an Bildern in Ordner, um Bilder zu benennen (image-0 bis image-n)
+        imageIndex = len([name for name in os.listdir(imageFolder) if os.path.isfile((os.path.join(imageFolder, name)))])
 
-        imageName = SAVE_FOLDER + '/' + searchQuery + str(i + 1) + '.jpg'
-        with open(imageName, 'wb') as file:
-            print("Downloading...")
-            file.write(response.content)
+        # Bild runterladen
+        newImage = cv2.imwrite("{0}/{1}-{2}.jpg".format(imageFolder, searchQuery, imageIndex), urlToImage(url))
+        images.append(newImage)
 
+
+def urlToImage(url):
+    # download the image, convert it to a NumPy array, and then read
+    # it into OpenCV format
+    resp = urllib.request.urlopen(url)
+    image = numpy.asarray(bytearray(resp.read()), dtype="uint8")
+    image = cv2.imdecode(image, cv2.IMREAD_COLOR)
+
+    # return the image
+    return image
+
+
+def imageToGrayscale(image):
+    return cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
 if __name__ == "__main__":
     app.run(debug=True)
-    # search()
+    # search("kittens")

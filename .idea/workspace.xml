@@ -20,12 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="546f2c6a-749b-49e0-8a83-4c5d55542612" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/TypographyVisualiser/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TypographyVisualiser/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/TypographyVisualiser/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TypographyVisualiser/static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/TypographyVisualiser/static/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TypographyVisualiser/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/TypographyVisualiser/templates/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TypographyVisualiser/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/TypographyVisualiser/templates/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,6 +53,35 @@
       <recent name="D:\OneDrive - Hochschule Düsseldorf\6. Semester\KommDes-TypographyVisualiser" />
     </key>
   </component>
+  <component name="RunManager">
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="KommDes-TypographyVisualiser" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/TypographyVisualiser" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/TypographyVisualiser/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.main" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -69,7 +95,8 @@
       <workItem from="1589203201500" duration="57000" />
       <workItem from="1589203279227" duration="473000" />
       <workItem from="1589203766344" duration="8846000" />
-      <workItem from="1589367997764" duration="14951000" />
+      <workItem from="1589367997764" duration="15546000" />
+      <workItem from="1590151767181" duration="4776000" />
     </task>
     <servers />
   </component>
@@ -89,9 +116,28 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1590156512340">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1590156512339" />
+    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1590156512339">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1590156512339" />
+    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1590156512339">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1590156512339" />
+    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1590156512339">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1590156512339" />
     <state x="-1297" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1589384801101">
       <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
     <state x="-1297" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1589384801101" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/KommDes_TypographyVisualiser$main.coverage" NAME="main Coverage Results" MODIFIED="1590156512330" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/TypographyVisualiser" />
   </component>
 </project>

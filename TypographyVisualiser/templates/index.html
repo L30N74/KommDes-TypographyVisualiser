@@ -11,26 +11,35 @@
             <p id="log">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
             </p>
             <form method="post", id="form">
-                <label for="searchbar"></label>
-                <input type="text" id="searchbar">
-                <input type="submit" value="Suchen">
+                <label for="searchbar">Suchbegriff: </label>
+                <input type="text" id="searchbar" />
+                <br />
+                <label for="imageAmount">Anzahl an Bildern: </label>
+                <input type="number" id="imageAmount" />
+                <input type="submit" value="Suchen" />
             </form>
+
+            <p id="debug"></p>
         </section>
         <section id="content images">
 
         </section>
     </main>
 
-<!--    jQuery und ajax zum abfangen des Absenden der Form-->
+<!--    jQuery und ajax zum Abfangen des Absendens der Form-->
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script>
         $('#form').on('submit', function(e){
-            var term = $('#searchbar').val();                       // Inhalt des Eingabefelds zwischenspeichern
+            var keyword = $('#searchbar').val();                    // Inhalt des Eingabefelds zwischenspeichern
+            var amount = $('#imageAmount').val();
             e.preventDefault();                                     // Leere Felder nicht zulassen
             $.ajax({
                 url: 'http://localhost:5000/DownloadImages',        // Ziel festlegen (in main.py als app.route gesetzt)
-                data: {'keyword': term},                            // Nutzereingabe einpacken
-                method: 'POST'                                      // Methode festlegen
+                data: {'keyword': keyword, 'amount': amount},       // Nutzereingabe einpacken
+                method: 'POST',                                     // Methode festlegen
+                success: function (data) {
+                    $('debug').html(data)
+                }
             });
         });
     </script>
