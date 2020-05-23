@@ -8,7 +8,7 @@ import requests
 import subprocess
 import pkg_resources
 from bs4 import BeautifulSoup
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 
 # importiere jedes Modul, das der Nutzer nicht hat, wir aber benötigen
 required = {'bs4', 'flask'}
@@ -42,10 +42,13 @@ def start():
     return render_template('index.html')  # Nimm das Dokument home.html aus Ordner templates
 
 
-@app.route('/DownloadImages', methods=['POST'])
+@app.route('/DownloadImages', methods=['POST', 'GET'])
 def search():
     keyword = str(request.form.get('keyword'))
     image_amount = int(request.form.get('amount'))
+    color = str(request.form.get('color'))
+
+    print(color)
 
     if keyword is None or image_amount is None:
         return None
@@ -59,6 +62,14 @@ def search():
     soup = BeautifulSoup(html, 'html.parser')
     download(keyword, soup, image_amount)
 
+    return "Nothing"
+
+
+@app.route('/Settings')
+def settings():
+    return  render_template('settings.html')
+
+
 
 def download(searchQuery, html, imageAmount):
     results = html.findAll('img', {'class': 't0fcAb'}, limit=imageAmount)
@@ -68,8 +79,6 @@ def download(searchQuery, html, imageAmount):
         seperates = str(result).split(' ')
         parts = seperates[3].split('"')
         imageLinks.append(parts[1])
-
-    print(len(imageLinks))
 
     imageFolder = "images/" + searchQuery
     if not os.path.exists(imageFolder):
@@ -98,6 +107,7 @@ def urlToImage(url):
 
 def imageToGrayscale(image):
     return cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+
 
 if __name__ == "__main__":
     app.run(debug=True)

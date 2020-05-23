@@ -2,5 +2,5 @@
 TypographyVisualiser/.idea/workspace.xml
 
 # Bilder müssen nicht mit gepushed werden
-/TypographyVisualiser/images
+/TypographyVisualiser/images/*
 

@@ -20,14 +20,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="546f2c6a-749b-49e0-8a83-4c5d55542612" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TypographyVisualiser/fonts/Piedra-Regular.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TypographyVisualiser/templates/settings.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/KommDes-TypographyVisualiser.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/KommDes-TypographyVisualiser.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TypographyVisualiser/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/TypographyVisualiser/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TypographyVisualiser/static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/TypographyVisualiser/static/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TypographyVisualiser/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/TypographyVisualiser/templates/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -43,12 +56,15 @@
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\OneDrive - Hochschule Düsseldorf\6. Semester\KommDes-TypographyVisualiser\TypographyVisualiser\fonts" />
       <recent name="D:\OneDrive - Hochschule Düsseldorf\6. Semester\KommDes-TypographyVisualiser\TypographyVisualiser\static" />
       <recent name="D:\OneDrive - Hochschule Düsseldorf\6. Semester\KommDes-TypographyVisualiser" />
     </key>
@@ -96,7 +112,8 @@
       <workItem from="1589203279227" duration="473000" />
       <workItem from="1589203766344" duration="8846000" />
       <workItem from="1589367997764" duration="15546000" />
-      <workItem from="1590151767181" duration="4776000" />
+      <workItem from="1590151767181" duration="8172000" />
+      <workItem from="1590249834322" duration="6644000" />
     </task>
     <servers />
   </component>
@@ -116,28 +133,28 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1590156512340">
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1590256397525">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1590156512339" />
-    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1590156512339">
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1590256397525" />
+    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1590256397525">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1590156512339" />
-    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1590156512339">
+    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1590256397525" />
+    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1590256397525">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1590156512339" />
-    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1590156512339">
+    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1590256397525" />
+    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1590256397525">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1590156512339" />
+    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1590256397525" />
     <state x="-1297" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1589384801101">
       <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
     <state x="-1297" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1589384801101" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/KommDes_TypographyVisualiser$main.coverage" NAME="main Coverage Results" MODIFIED="1590156512330" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/TypographyVisualiser" />
+    <SUITE FILE_PATH="coverage/KommDes_TypographyVisualiser$main.coverage" NAME="main Coverage Results" MODIFIED="1590256397519" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/TypographyVisualiser" />
   </component>
 </project>
