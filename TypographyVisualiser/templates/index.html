@@ -3,6 +3,9 @@
 <head>
     <title>Home</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">  <!-- &lt;!&ndash; In Flask müssen css Dateien in dem Ordner static sein. Hier wird dann die Referenz gelegt &ndash;&gt; -->
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
 </head>
 <body>
     <main>
@@ -17,36 +20,59 @@
                 <label for="imageAmount">Anzahl an Bildern: </label>
                 <input type="number" id="imageAmount" />
                 <input type="submit" value="Suchen" />
+
 {#                <input type="color" id="colorPicker" />#}
             </form>
         </section>
 
-
-
-        <section id="content images">
-            <img src="" id="img1" width="100" height="100" />
+        <section id="images">
+            <p>Hello </p>
+            <form id="formImages">
+                <input type="submit" id="continue" />
+            </form>
         </section>
     </main>
 
-<!--    jQuery und ajax zum Abfangen des Absendens der Form-->
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script>
-        $('#form').on('submit', function(e){
-            let keyword = $('#searchbar').val();                                    // Inhalt des Eingabefelds zwischenspeichern
+        let keyword = "";
+        $('#form').on('submit', event => {
+            keyword = $('#searchbar').val();                                        // Inhalte der Eingabefelder zwischenspeichern
             let amount = $('#imageAmount').val();
-            let urlPrefix = 'http://127.0.0.1:5000';
-            {#let color = $('#colorPicker').val();#}
-            e.preventDefault();                                                     // Leere Felder nicht zulassen
+            //let color = $('#colorPicker').val();
+            event.preventDefault();                                                 // Standard HTML form-post unterbrechen, da wir ajax nutzen
             $.ajax({
-                url: urlPrefix.concat("/DownloadImages"),                           // Ziel festlegen (in main.py als app.route gesetzt)
+                url: "/DownloadImages",                                             // Ziel festlegen (in main.py als app.route gesetzt)
                 data: {'keyword': keyword, 'amount': amount},                       // Nutzereingabe einpacken
-                method: 'POST',
-                success: function () {
-                    window.location.href = urlPrefix.concat("/Settings");
-                }
-            });
+                method: 'POST'
+            })
+            .done(data => {                                                         // Was soll passieren, wenn search() zuende ist
+                //window.location.href = "/Settings";
 
+                // Anzahl an Bildern bekommen wir am Ende des downloads mitgeteilt.
+                // Für jedes runtergeladene Bild soll jetzt ein img-tag erstellt
+                // und das src-Attribut mit dem Pfad zum Bild gefült werden
+                // TODO: Pfad schöner zusammenbinden
+                for (let i = 0; i < data.amount; i++) {
+                    let filename = "{{ url_for('static', filename='images') }}".concat('/')
+                        .concat(keyword)
+                        .concat('/')
+                        .concat(keyword)
+                        .concat('-')
+                        .concat(i.toString())
+                        .concat('.jpg');
+                            // ^ Ew...
+
+                    $("<img>").attr("src", filename).appendTo("#images");
+                }
+            })
         });
+
+        // redirect funktioniert aus unbekannten Gründen nicht.
+        // Wenn das selbe oben aufgerufen wird, gehts
+        $('#formImages').on('submit', event => {
+            console.log("Redirect to settings");
+            window.location.href = "/Settings";
+        })
     </script>
 </body>
 </html>

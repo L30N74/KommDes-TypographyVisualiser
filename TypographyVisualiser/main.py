@@ -8,10 +8,10 @@ import requests
 import subprocess
 import pkg_resources
 from bs4 import BeautifulSoup
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, url_for, jsonify
 
 # importiere jedes Modul, das der Nutzer nicht hat, wir aber benötigen
-required = {'bs4', 'flask'}
+required = {'bs4', 'opencv-python', 'flask'}
 installed = {pkg.key for pkg in pkg_resources.working_set}
 missing = required - installed
 
@@ -37,6 +37,7 @@ app = Flask(__name__)
 
 images = []
 
+
 @app.route('/')
 def start():
     return render_template('index.html')  # Nimm das Dokument home.html aus Ordner templates
@@ -48,7 +49,6 @@ def search():
     image_amount = int(request.form.get('amount'))
     color = str(request.form.get('color'))
 
-    print(color)
 
     if keyword is None or image_amount is None:
         return None
@@ -62,13 +62,13 @@ def search():
     soup = BeautifulSoup(html, 'html.parser')
     download(keyword, soup, image_amount)
 
-    return "Nothing"
+    # Angabe der Anzahl der runtergeladenen Bilder macht Suche einfacher
+    return jsonify({"amount": len(images)})
 
 
 @app.route('/Settings')
 def settings():
-    return  render_template('settings.html')
-
+    return render_template('settings.html')
 
 
 def download(searchQuery, html, imageAmount):
@@ -80,7 +80,7 @@ def download(searchQuery, html, imageAmount):
         parts = seperates[3].split('"')
         imageLinks.append(parts[1])
 
-    imageFolder = "images/" + searchQuery
+    imageFolder = "static/images/" + searchQuery
     if not os.path.exists(imageFolder):
         os.mkdir(imageFolder)
 
@@ -111,4 +111,3 @@ def imageToGrayscale(image):
 
 if __name__ == "__main__":
     app.run(debug=True)
-    # search("kittens")
