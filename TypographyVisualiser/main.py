@@ -1,25 +1,12 @@
 import os
-import sys
 import cv2
 import numpy
 import urllib.request
 from matplotlib import pyplot
 import requests
-import subprocess
-import pkg_resources
 from bs4 import BeautifulSoup
-from flask import Flask, render_template, request, url_for, jsonify
+from flask import Flask, render_template, request, jsonify
 
-# importiere jedes Modul, das der Nutzer nicht hat, wir aber benötigen
-required = {'bs4', 'opencv-python', 'flask'}
-installed = {pkg.key for pkg in pkg_resources.working_set}
-missing = required - installed
-
-if missing:
-    python = sys.executable
-
-    # Rufe für jedes fehlende Modul "pip install <Modul>" auf
-    subprocess.check_call([python, '-m', 'pip', 'install', *missing], stdout=subprocess.DEVNULL)
 
 ##############################################
 
