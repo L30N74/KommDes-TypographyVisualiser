@@ -13,7 +13,8 @@ python --version
 
 ausgeführt werden.
 
-Liefert dieser Befehl folgendes Ergebnis, ist python installiert.
+Liefert dieser Befehl folgendes Ergebnis (oder neuer), ist python installiert.
+Bei einer älteren Version sollte python auf den neusten Stand gebracht werden.
 
 ![image-20200511155420353](TypographyVisualiser/ressources/python%20install%20verification.jpg)
 
@@ -21,16 +22,21 @@ Wenn nicht, muss python vorerst über die [offizielle Python Webseite][1] herunt
 
 ---
 
-Zur Ausführung des Programms werden ein paar Bibliotheken verwendet, welche vorher vorhanden sein müssen.
+Es wird empfohlen, python module in einer virtuellen Umgebung zu installieren.
+Das Programm [Anaconda][3] vereinfacht dieses Vorgehen.
 
-Ist `pip` bereits auf dem Computer installiert, ist dies nur eine Sache der Ausführung weniger Befehle über die Kommandozeile/Terminal.
-Ansonsten kann  `pip` [hier][2] heruntergeladen und danach installiert werden.
+Ist Anaconda installiert, kann mit dem Kommandozeilen-Befehl 
+`conda create -n umgebungs_name python=<version von python --version>` eine neue Umgebung erstellt und mittels
+`conda activate umgebungs_name` besucht werden.
 
-<Bibliotheken hier>
+Als nächstes müssen die zur Ausführung des Programms notwendigen Module installiert werden.
 
----
+Hierzu reicht es aus, in der Kommandozeile `pip install -r requirements.txt` im Projektverzeichnis 
+'KommDes - TypographyVisualiser/TypgoraphyVisualiser' 
+auszuführen.
+
 
 
 
 [1]: https://www.python.org/downloads/
-[2]: https://pypi.org/project/pip/
+[3]: https://www.anaconda.com/products/individual
