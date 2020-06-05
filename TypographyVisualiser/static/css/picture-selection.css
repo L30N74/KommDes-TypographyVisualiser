@@ -1,0 +1,70 @@
+main {
+    padding: 3% 5% 3% 5%;
+}
+hr {
+    width: 200px;
+    margin: 2% 1% 2% 1%;
+}
+.page-description {
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+/* Stepper*/
+.stepper {
+    display: flex;
+    padding: 0 5% 0 5%;
+    justify-content: center;
+}
+.disabled-circle-description {
+    color: #898989;
+    font-size: 1.1vw;
+}
+.active-circle-description {
+    color: #297DFC;
+    font-weight: bold;
+    font-size: 1.2vw;
+}
+
+/* From */
+.search-bar {
+    width: 130%;
+}
+label {
+    font-weight: bold;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.label-input {
+    display: flex;
+    flex-direction: column;
+    padding-right: 5%;
+}
+.search-button {
+    height: 100%;
+    margin-top: 1%;
+}
+.next-button {
+    position: absolute;
+    bottom: 10%;
+    right: 2%;
+}
+/* Footer */
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+
+    background: #666666;
+}
+footer span {
+    color: whitesmoke;
+}
+footer .version {
+   font-size: 2vw;
+}
+
