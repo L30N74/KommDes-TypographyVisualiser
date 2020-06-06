@@ -40,7 +40,7 @@ images = []
 
 @app.route('/')
 def start():
-    return render_template('index.html')  # Nimm das Dokument home.html aus Ordner templates
+    return render_template('step1.html')  # Nimm das Dokument home.html aus Ordner templates
 
 
 @app.route('/DownloadImages', methods=['POST', 'GET'])
