@@ -1,25 +1,12 @@
 import os
-import sys
 import cv2
 import numpy
 import urllib.request
-from matplotlib import pyplot
+from matplotlib import pyplot as plt
 import requests
-import subprocess
-import pkg_resources
 from bs4 import BeautifulSoup
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 
-# importiere jedes Modul, das der Nutzer nicht hat, wir aber benötigen
-required = {'bs4', 'flask'}
-installed = {pkg.key for pkg in pkg_resources.working_set}
-missing = required - installed
-
-if missing:
-    python = sys.executable
-
-    # Rufe für jedes fehlende Modul "pip install <Modul>" auf
-    subprocess.check_call([python, '-m', 'pip', 'install', *missing], stdout=subprocess.DEVNULL)
 
 ##############################################
 
@@ -37,6 +24,7 @@ app = Flask(__name__)
 
 images = []
 
+
 @app.route('/')
 def start():
     return render_template('index.html')  # Nimm das Dokument home.html aus Ordner templates
@@ -46,6 +34,7 @@ def start():
 def search():
     keyword = str(request.form.get('keyword'))
     image_amount = int(request.form.get('amount'))
+    color = str(request.form.get('color'))
 
     if keyword is None or image_amount is None:
         return None
@@ -59,6 +48,36 @@ def search():
     soup = BeautifulSoup(html, 'html.parser')
     download(keyword, soup, image_amount)
 
+    # Angabe der Anzahl der runtergeladenen Bilder macht Suche einfacher
+    return jsonify({"amount": len(images)})
+
+
+@app.route('/Settings')
+def settings():
+    return render_template('settings.html')
+
+
+@app.route("/Contours", methods=['POST'])
+def getContours():
+    print("---------------------- Contours")
+    imagePath = str(request.form.get('imagePath'))
+    thresh_low = int(request.form.get('thresh_low'))
+    thresh_high = int(request.form.get('thresh_high'))
+
+
+    # import image
+    image = cv2.imread(imagePath)
+    image_gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+
+    edged = cv2.Canny(image_gray, thresh_low, thresh_high, edges=True)
+
+    contours, hierarchy = cv2.findContours(edged, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
+    cv2.imwrite("static/output/result.jpg", edged)
+    # cv2.imshow("canny edges", edged)
+    # cv2.waitKey(0)
+
+    return "Nothing"
+
 
 def download(searchQuery, html, imageAmount):
     results = html.findAll('img', {'class': 't0fcAb'}, limit=imageAmount)
@@ -69,9 +88,7 @@ def download(searchQuery, html, imageAmount):
         parts = seperates[3].split('"')
         imageLinks.append(parts[1])
 
-    print(len(imageLinks))
-
-    imageFolder = "images/" + searchQuery
+    imageFolder = "static/images/" + searchQuery
     if not os.path.exists(imageFolder):
         os.mkdir(imageFolder)
 
@@ -96,9 +113,5 @@ def urlToImage(url):
     return image
 
 
-def imageToGrayscale(image):
-    return cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-
 if __name__ == "__main__":
     app.run(debug=True)
-    # search("kittens")
