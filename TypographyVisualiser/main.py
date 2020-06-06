@@ -2,7 +2,7 @@ import os
 import cv2
 import numpy
 import urllib.request
-from matplotlib import pyplot
+from matplotlib import pyplot as plt
 import requests
 from bs4 import BeautifulSoup
 from flask import Flask, render_template, request, jsonify
@@ -30,12 +30,11 @@ def start():
     return render_template('index.html')  # Nimm das Dokument home.html aus Ordner templates
 
 
-@app.route('/DownloadImages', methods=['POST', 'GET'])
+@app.route('/DownloadImages', methods=['POST'])
 def search():
     keyword = str(request.form.get('keyword'))
     image_amount = int(request.form.get('amount'))
     color = str(request.form.get('color'))
-
 
     if keyword is None or image_amount is None:
         return None
@@ -56,6 +55,28 @@ def search():
 @app.route('/Settings')
 def settings():
     return render_template('settings.html')
+
+
+@app.route("/Contours", methods=['POST'])
+def getContours():
+    print("---------------------- Contours")
+    imagePath = str(request.form.get('imagePath'))
+    thresh_low = int(request.form.get('thresh_low'))
+    thresh_high = int(request.form.get('thresh_high'))
+
+
+    # import image
+    image = cv2.imread(imagePath)
+    image_gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+
+    edged = cv2.Canny(image_gray, thresh_low, thresh_high, edges=True)
+
+    contours, hierarchy = cv2.findContours(edged, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
+    cv2.imwrite("static/output/result.jpg", edged)
+    # cv2.imshow("canny edges", edged)
+    # cv2.waitKey(0)
+
+    return "Nothing"
 
 
 def download(searchQuery, html, imageAmount):
@@ -90,10 +111,6 @@ def urlToImage(url):
 
     # return the image
     return image
-
-
-def imageToGrayscale(image):
-    return cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
 
 if __name__ == "__main__":

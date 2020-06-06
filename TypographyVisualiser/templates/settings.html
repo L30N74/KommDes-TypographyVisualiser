@@ -3,9 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
 </head>
 <body>
     <h1>Test</h1>
-    <div id="content images"></div>
+
+    <form action="" method="post">
+        <section id="outline_mode">
+            <label for="filled">Ausgef&uuml;llt</label>
+            <input type="radio" class="fill_mode" id="filled" />
+            <br />
+
+            <label for="outline">Umrandung</label>
+            <input type="radio" class="fill_mode" id="outline" />
+            <br />
+
+            <label for="outline">Threshold Low</label>
+            <input type="range" id="thresh_low" min="10" max="200" oninput="rangevalue_low.value=value" onchange="render()">
+            <input type="text" id="rangevalue_low" onchange="thresh_low.value=value" />
+            <br />
+
+            <label for="outline">Threshold High</label>
+            <input type="range" id="thresh_high" min="100" max="400" oninput="rangevalue_high.value=value" onchange="render()">
+            <input type="text" id="rangevalue_high" onchange="thresh_high.value=value" />
+        </section>
+
+        <br />
+        <input type="color" id="color_picker" />
+        <br />
+        <input type="button" id="submit" value="Weiter" />
+    </form>
+    <img id="outlined_image" />
+
+    <script>
+        document.getElementById("rangevalue_low").value = document.getElementById("thresh_low").value;
+        document.getElementById("rangevalue_high").value = document.getElementById("thresh_high").value;
+
+        function render() {
+            let range_low = document.getElementById("rangevalue_low").value;
+            let range_high = document.getElementById("rangevalue_high").value;
+
+            console.log("low: " + range_low + "; high: " + range_high);
+            $.ajax({
+                url: "/Contours",
+                data: {
+                    'imagePath': 'static/images/kittens/kittens-2.jpg',
+                    'thresh_low': range_low,
+                    'thresh_high': range_high
+                },
+                method: 'POST'
+            })
+            .done(() => {
+                // Ladeanimation abspielen
+                $("#outlined_image").attr("src", "");
+
+
+                setTimeout(() => {
+                    let source = "../static/output/result.jpg?" + (new Date()).getTime();   // Um caching des Bildes zu verhindern, wird ein timestamp mitgegeben
+                    $("#outlined_image").attr({"src": source, "class": "img_result"});
+                }, 2000)
+
+            })
+        }
+    </script>
 </body>
 </html>
