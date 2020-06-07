@@ -18,7 +18,12 @@ def start():
 
 @app.route('/Settings')
 def settings():
-    return render_template('settings.html')
+    return render_template('step2.html')
+
+
+@app.route('/Finish')
+def finish():
+    return render_template('step3.html')
 
 
 if __name__ == "__main__":
