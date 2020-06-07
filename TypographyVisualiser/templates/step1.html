@@ -56,12 +56,15 @@
     <button class="btn btn-primary next-button">Weiter zum nächsten Schritt</button>
 </main>
 <script>
+    let chosenImages = [];
     let keyword = "";
+
     $('#form').on('submit', event => {
         keyword = $('#searchbar').val();                                        // Inhalte der Eingabefelder zwischenspeichern
         let amount = $('#imageAmount').val();
         //let color = $('#colorPicker').val();
-        event.preventDefault();                                                 // Standard HTML form-post unterbrechen, da wir ajax nutzen
+        event.preventDefault();
+                                                       // Standard HTML form-post unterbrechen, da wir ajax nutzen
         $.ajax({
             url: "/DownloadImages",                                             // Ziel festlegen (in main.py als app.route gesetzt)
             data: {'keyword': keyword, 'amount': amount},                       // Nutzereingabe einpacken
@@ -84,7 +87,17 @@
                         .concat('.jpg');
                     // ^ Ew...
 
-                    $("<img>").attr("src", filename).appendTo("#images");
+                    let newImage = $("<img>").attr({"src": filename, "class": "img_selected"});
+                    newImage.click(event => {
+                        // Umrandung
+                        newImage.css("box-shadow", "5px 5px #ffa0ff");
+
+                        // Zu Liste ausgewählter Bilder hinzufügen
+                        chosenImages.push(filename);
+                    })
+
+                    // Auf Webseite darstellen
+                    newImage.appendTo("#images");
                 }
             })
     });
@@ -92,8 +105,8 @@
     // redirect funktioniert aus unbekannten Gründen nicht.
     // Wenn das selbe oben aufgerufen wird, gehts
     $('#formImages').on('submit', event => {
-        console.log("Redirect to settings");
-        window.location.href = "/Settings";
+        event.preventDefault();
+            window.location.href = "/Settings"
     })
 </script>
 <footer>

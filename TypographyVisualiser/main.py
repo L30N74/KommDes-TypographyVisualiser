@@ -68,7 +68,29 @@ def search():
 
 @app.route('/Settings')
 def settings():
-    return render_template('settings.html')
+    return render_template('step2.html')
+
+
+@app.route("/Contours", methods=['POST'])
+def getContours():
+    print("---------------------- Contours")
+    imagePath = str(request.form.get('imagePath'))
+    thresh_low = int(request.form.get('thresh_low'))
+    thresh_high = int(request.form.get('thresh_high'))
+
+
+    # import image
+    image = cv2.imread(imagePath)
+    image_gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+
+    edged = cv2.Canny(image_gray, thresh_low, thresh_high, edges=True)
+
+    contours, hierarchy = cv2.findContours(edged, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
+    cv2.imwrite("static/output/result.jpg", edged)
+    # cv2.imshow("canny edges", edged)
+    # cv2.waitKey(0)
+
+    return "Nothing"
 
 
 def download(searchQuery, html, imageAmount):

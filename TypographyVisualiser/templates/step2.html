@@ -36,8 +36,8 @@
             <div class="row">
                 <div class="col-md-2">
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="Radios" id="Radio1" value="option1" checked>
-                        <label class="form-check-label" for="Radio1">Ausfüllen</label>
+                        <input class="form-check-input" type="radio" name="Radios" id="fill" value="option1" checked>
+                        <label class="form-check-label" for="fill">Ausfüllen</label>
                     </div>
                     <div>
                        <div class="card">
@@ -53,9 +53,17 @@
                 </div>
                 <div class="col-md-2">
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="Radios" id="Radio2" value="option2">
-                        <label class="form-check-label" for="Radio2">Umranden</label>
+                        <input class="form-check-input" type="radio" name="Radios" id="outline" value="option2">
+                        <label class="form-check-label" for="outline">Umranden</label>
                     </div>
+                    <label for="outline">Threshold Low</label>
+                    <input type="range" id="thresh_low" min="10" max="200" oninput="rangevalue_low.value=value" onchange="render()">
+                    <input type="text" id="rangevalue_low" onchange="thresh_low.value=value" />
+                    <br />
+
+                    <label for="outline">Threshold High</label>
+                    <input type="range" id="thresh_high" min="100" max="400" oninput="rangevalue_high.value=value" onchange="render()">
+                    <input type="text" id="rangevalue_high" onchange="thresh_high.value=value" />
                 </div>
                 <div class="col-md-4">
                     <section id="image">
@@ -68,6 +76,37 @@
         </form>
     </div>
 </main>
+<script>
+        document.getElementById("rangevalue_low").value = document.getElementById("thresh_low").value;
+        document.getElementById("rangevalue_high").value = document.getElementById("thresh_high").value;
+
+        function render() {
+            let range_low = document.getElementById("rangevalue_low").value;
+            let range_high = document.getElementById("rangevalue_high").value;
+
+            console.log("low: " + range_low + "; high: " + range_high);
+            $.ajax({
+                url: "/Contours",
+                data: {
+                    'imagePath': 'static/images/kittens/kittens-2.jpg',
+                    'thresh_low': range_low,
+                    'thresh_high': range_high
+                },
+                method: 'POST'
+            })
+            .done(() => {
+                // Ladeanimation abspielen
+                $("#outlined_image").attr("src", "");
+
+
+                setTimeout(() => {
+                    let source = "../static/output/result.jpg?" + (new Date()).getTime();   // Um caching des Bildes zu verhindern, wird ein timestamp mitgegeben
+                    $("#outlined_image").attr({"src": source, "class": "img_result"});
+                }, 2000)
+
+            })
+        }
+</script>
 <footer>
     <span class="version">Version 1</span>
     <span>Ein Projekt im Rahmen des Kommunikations Designs Modules 2020 der HSD Jasmin Eßer, Leon Krüger, Niklas Turk und Angela Lisse</span>
