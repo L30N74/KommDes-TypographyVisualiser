@@ -46,4 +46,4 @@ Hierzu reicht es aus, in der Kommandozeile folgenden Befehl auszuführen:
 [python download]: https://www.python.org/downloads/
 [anaconda download]: https://www.anaconda.com/products/individual
 [python install]: TypographyVisualiser/ressources/python%20install%20verification.jpg
-[dependencies]: TypographyVisualiser/ressources/dependencies%20installation.jpg
+[dependencies]: TypographyVisualiser/ressources/dependencies%20installation.JPG
