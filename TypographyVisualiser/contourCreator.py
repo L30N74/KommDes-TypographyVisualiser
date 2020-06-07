@@ -6,10 +6,13 @@ contourCreator = Blueprint("contourCreator", __name__, static_folder="static")
 
 @contourCreator.route("/Contours", methods=['POST'])
 def getContours():
-    print("---------------------- Contours")
     imagePath = str(request.form.get('imagePath'))
     thresh_low = int(request.form.get('thresh_low'))
     thresh_high = int(request.form.get('thresh_high'))
+
+    if imagePath is None or "": return
+    if thresh_low is None: return
+    if thresh_high is None: return
 
 
     # import image

@@ -76,14 +76,7 @@
                 // und das src-Attribut mit dem Pfad zum Bild gefült werden
                 // TODO: Pfad schöner zusammenbinden
                 for (let i = 0; i < data.amount; i++) {
-                    let filename = "{{ url_for('static', filename='images') }}".concat('/')
-                        .concat(keyword)
-                        .concat('/')
-                        .concat(keyword)
-                        .concat('-')
-                        .concat(i.toString())
-                        .concat('.jpg');
-                    // ^ Ew...
+                    let filename = `../static/images/${keyword}/${keyword}-${i.toString()}.jpg`;
 
                     let newImage = $("<img>").attr({"src": filename, "class": "img_selected"});
                     newImage.click(event => {
@@ -104,6 +97,9 @@
     // Wenn das selbe oben aufgerufen wird, gehts
     $('#redirect-step-2').on('click', event => {
         event.preventDefault();
+
+
+
         window.location.href = "/Settings";
     })
 </script>
