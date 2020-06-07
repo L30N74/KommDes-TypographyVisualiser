@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <title>Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <!-- &lt;!&ndash; In Flask müssen css Dateien in dem Ordner static sein. Hier wird dann die Referenz gelegt &ndash;&gt; -->
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <!-- Einbingung von Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/picture-selection.css')}}">
+</head>
+<body>
+<main>
+    <div id="content header">
+        <div class="stepper">
+            <div class="step-one">
+                <img src="../static/icons/circle_1_inactive.svg" alt="Kreis mit einer eins">
+                <span class="disabled-circle-description">Bild aussuchen</span>
+            </div>
+            <hr/>
+            <div class="step-two">
+                <img src="../static/icons/circle_2_active.svg" alt="Kreis mit einer zwei">
+                <span class="active-circle-description">Schriftart und Farbe wählen</span>
+            </div>
+            <hr/>
+            <div class="step-three">
+                <img src="../static/icons/circle_3_disabled.svg" alt="Kreis mit einer drei">
+                <span class="disabled-circle-description">Endergebnis herunterladen</span>
+            </div>
+        </div>
+        <p id="log" class="page-description">Hier können Sie einen Modus und eine Schriftfarbe auswählen.
+        </p>
+        <form method="post" id="form">
+            <div class="row">
+                <div class="col-md-2">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="Radios" id="fill" value="option1" checked>
+                        <label class="form-check-label" for="fill">Ausfüllen</label>
+                    </div>
+                    <div>
+                       <div class="card">
+                          <form>
+                              <label for="kb_selected_color">
+                                  Bitte Farbe wählen:
+                              </label>
+                              <input type="color" id="kb_selected_color">
+                              <span id="hex">(#000000)</span>
+                            </form>
+                       </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="Radios" id="outline" value="option2">
+                        <label class="form-check-label" for="outline">Umranden</label>
+                    </div>
+                    <label for="outline">Threshold Low</label>
+                    <input type="range" id="thresh_low" min="10" max="200" oninput="rangevalue_low.value=value" onchange="render()">
+                    <input type="text" id="rangevalue_low" onchange="thresh_low.value=value" />
+                    <br />
+
+                    <label for="outline">Threshold High</label>
+                    <input type="range" id="thresh_high" min="100" max="400" oninput="rangevalue_high.value=value" onchange="render()">
+                    <input type="text" id="rangevalue_high" onchange="thresh_high.value=value" />
+                </div>
+                <div class="col-md-4">
+                    <section id="image">
+                        <p>Bild</p>
+
+                    </section>
+                    <button class="btn btn-primary next-button" id="redirect-step-3">Weiter zum nächsten Schritt</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</main>
+
+<footer>
+    <span class="version">Version 1</span>
+    <span>Ein Projekt im Rahmen des Kommunikations Designs Modules 2020 der HSD Jasmin Eßer, Leon Krüger, Niklas Turk und Angela Lisse</span>
+</footer>
+
+<script>
+        document.getElementById("rangevalue_low").value = document.getElementById("thresh_low").value;
+        document.getElementById("rangevalue_high").value = document.getElementById("thresh_high").value;
+
+        function render() {
+            let range_low = document.getElementById("rangevalue_low").value;
+            let range_high = document.getElementById("rangevalue_high").value;
+
+            console.log("low: " + range_low + "; high: " + range_high);
+            $.ajax({
+                url: "/Contours",
+                data: {
+                    'imagePath': 'static/images/kitten/kitten-2.jpg',
+                    'thresh_low': range_low,
+                    'thresh_high': range_high
+                },
+                method: 'POST'
+            })
+            .done(() => {
+                // Ladeanimation abspielen
+                $("#outlined_image").attr("src", "");
+
+                setTimeout(() => {
+                    let source = "../static/output/result.jpg?" + (new Date()).getTime();   // Um caching des Bildes zu verhindern, wird ein timestamp mitgegeben
+                    $("#outlined_image").attr({"src": source, "class": "img_result"});
+                }, 2000)
+
+            })
+        }
+
+        $("#redirect-step-3").on("click", event => {
+            event.preventDefault();
+            window.location.href = "/Finish"
+        })
+</script>
+
+</body>
+</html>
