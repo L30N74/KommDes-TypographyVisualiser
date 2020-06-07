@@ -39,8 +39,19 @@ images = []
 
 
 @app.route('/')
+@app.route('/Start')
 def start():
     return render_template('step1.html')  # Nimm das Dokument home.html aus Ordner templates
+
+
+@app.route('/Settings')
+def settings():
+    return render_template('step2.html')
+
+
+@app.route('/Finish')
+def finish():
+    return render_template('step3.html')
 
 
 @app.route('/DownloadImages', methods=['POST', 'GET'])
@@ -48,7 +59,6 @@ def search():
     keyword = str(request.form.get('keyword'))
     image_amount = int(request.form.get('amount'))
     color = str(request.form.get('color'))
-
 
     if keyword is None or image_amount is None:
         return None
@@ -64,11 +74,6 @@ def search():
 
     # Angabe der Anzahl der runtergeladenen Bilder macht Suche einfacher
     return jsonify({"amount": len(images)})
-
-
-@app.route('/Settings')
-def settings():
-    return render_template('step2.html')
 
 
 @app.route("/Contours", methods=['POST'])

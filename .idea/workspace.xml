@@ -20,11 +20,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="546f2c6a-749b-49e0-8a83-4c5d55542612" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/KommDes-TypographyVisualiser.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/KommDes-TypographyVisualiser.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TypographyVisualiser/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/TypographyVisualiser/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TypographyVisualiser/static/images/duck/duck-0.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TypographyVisualiser/static/images/duck/duck-1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TypographyVisualiser/static/images/duck/duck-2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TypographyVisualiser/static/images/duck/duck-3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TypographyVisualiser/static/images/duck/duck-4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TypographyVisualiser/static/images/kitten/kitten-0.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TypographyVisualiser/static/images/kitten/kitten-1.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/TypographyVisualiser/templates/step1.html" beforeDir="false" afterPath="$PROJECT_DIR$/TypographyVisualiser/templates/step1.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TypographyVisualiser/templates/step2.html" beforeDir="false" afterPath="$PROJECT_DIR$/TypographyVisualiser/templates/step2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TypographyVisualiser/templates/step3.html" beforeDir="false" afterPath="$PROJECT_DIR$/TypographyVisualiser/templates/step3.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,6 +132,7 @@
       <workItem from="1590370830388" duration="4213000" />
       <workItem from="1590508332538" duration="4753000" />
       <workItem from="1590581831881" duration="19883000" />
+      <workItem from="1591550578873" duration="947000" />
     </task>
     <servers />
   </component>
@@ -148,26 +159,26 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="707" y="375" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1590586670747" />
-    <state width="1899" height="282" key="GridCell.Tab.0.bottom" timestamp="1591534755241">
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1591551451603">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1899" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1366.305.1366.728@0.0.1920.1040" timestamp="1591534755241" />
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1590610358978" />
-    <state width="1899" height="282" key="GridCell.Tab.0.center" timestamp="1591534755241">
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1591551451603" />
+    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1591551451603">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1899" height="282" key="GridCell.Tab.0.center/0.0.1920.1040/-1366.305.1366.728@0.0.1920.1040" timestamp="1591534755241" />
-    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1590610358978" />
-    <state width="1899" height="282" key="GridCell.Tab.0.left" timestamp="1591534755241">
+    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1591551451603" />
+    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1591551451602">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1899" height="282" key="GridCell.Tab.0.left/0.0.1920.1040/-1366.305.1366.728@0.0.1920.1040" timestamp="1591534755241" />
-    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1590610358978" />
-    <state width="1899" height="282" key="GridCell.Tab.0.right" timestamp="1591534755241">
+    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1591551451602" />
+    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1591551451603">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1899" height="282" key="GridCell.Tab.0.right/0.0.1920.1040/-1366.305.1366.728@0.0.1920.1040" timestamp="1591534755241" />
-    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1590610358978" />
+    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1591551451603" />
     <state x="667" y="119" width="585" height="801" key="find.popup" timestamp="1590581887988">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -176,5 +187,8 @@
       <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
     <state x="-1297" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1589384801101" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/KommDes_TypographyVisualiser$main.coverage" NAME="main Coverage Results" MODIFIED="1591551451594" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/TypographyVisualiser" />
   </component>
 </project>

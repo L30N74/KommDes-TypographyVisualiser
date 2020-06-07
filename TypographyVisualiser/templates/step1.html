@@ -50,10 +50,8 @@
 
     <section id="images">
         <p>Bilder: </p>
-        <form id="formImages">
-        </form>
     </section>
-    <button class="btn btn-primary next-button">Weiter zum nächsten Schritt</button>
+    <button class="btn btn-primary next-button" id="redirect-step-2">Weiter zum nächsten Schritt</button>
 </main>
 <script>
     let chosenImages = [];
@@ -104,9 +102,9 @@
 
     // redirect funktioniert aus unbekannten Gründen nicht.
     // Wenn das selbe oben aufgerufen wird, gehts
-    $('#formImages').on('submit', event => {
+    $('#redirect-step-2').on('click', event => {
         event.preventDefault();
-            window.location.href = "/Settings"
+        window.location.href = "/Settings";
     })
 </script>
 <footer>

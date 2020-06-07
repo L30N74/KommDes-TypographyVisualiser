@@ -40,7 +40,7 @@
                         <p>Bild</p>
 
                     </section>
-                    <button class="btn btn-primary next-button">Nächstes Kunstwerk</button>
+                    <button class="btn btn-primary next-button" id="redirect-step-1">Nächstes Kunstwerk</button>
                 </div>
             </div>
         </form>
@@ -50,5 +50,12 @@
     <span class="version">Version 1</span>
     <span>Ein Projekt im Rahmen des Kommunikations Designs Modules 2020 der HSD Jasmin Eßer, Leon Krüger, Niklas Turk und Angela Lisse</span>
 </footer>
+
+<script>
+    $("#redirect-step-1").on("click", event => {
+        event.preventDefault();
+        window.location.href = "/Start"
+    })
+</script>
 </body>
 </html>

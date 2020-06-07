@@ -70,12 +70,18 @@
                         <p>Bild</p>
 
                     </section>
-                    <button class="btn btn-primary next-button">Weiter zum nächsten Schritt</button>
+                    <button class="btn btn-primary next-button" id="redirect-step-3">Weiter zum nächsten Schritt</button>
                 </div>
             </div>
         </form>
     </div>
 </main>
+
+<footer>
+    <span class="version">Version 1</span>
+    <span>Ein Projekt im Rahmen des Kommunikations Designs Modules 2020 der HSD Jasmin Eßer, Leon Krüger, Niklas Turk und Angela Lisse</span>
+</footer>
+
 <script>
         document.getElementById("rangevalue_low").value = document.getElementById("thresh_low").value;
         document.getElementById("rangevalue_high").value = document.getElementById("thresh_high").value;
@@ -88,7 +94,7 @@
             $.ajax({
                 url: "/Contours",
                 data: {
-                    'imagePath': 'static/images/kittens/kittens-2.jpg',
+                    'imagePath': 'static/images/kitten/kitten-2.jpg',
                     'thresh_low': range_low,
                     'thresh_high': range_high
                 },
@@ -98,7 +104,6 @@
                 // Ladeanimation abspielen
                 $("#outlined_image").attr("src", "");
 
-
                 setTimeout(() => {
                     let source = "../static/output/result.jpg?" + (new Date()).getTime();   // Um caching des Bildes zu verhindern, wird ein timestamp mitgegeben
                     $("#outlined_image").attr({"src": source, "class": "img_result"});
@@ -106,10 +111,12 @@
 
             })
         }
+
+        $("#redirect-step-3").on("click", event => {
+            event.preventDefault();
+            window.location.href = "/Finish"
+        })
 </script>
-<footer>
-    <span class="version">Version 1</span>
-    <span>Ein Projekt im Rahmen des Kommunikations Designs Modules 2020 der HSD Jasmin Eßer, Leon Krüger, Niklas Turk und Angela Lisse</span>
-</footer>
+
 </body>
 </html>
