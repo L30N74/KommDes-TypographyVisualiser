@@ -20,16 +20,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="546f2c6a-749b-49e0-8a83-4c5d55542612" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/TypographyVisualiser/static/images/kittens/jasmin.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TypographyVisualiser/static/images/kittens/kittens-0.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TypographyVisualiser/static/images/kittens/kittens-1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TypographyVisualiser/static/images/kittens/kittens-2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TypographyVisualiser/static/images/kittens/kittens-3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TypographyVisualiser/static/images/kittens/kittens-4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TypographyVisualiser/static/output/result.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TypographyVisualiser/contourCreator.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TypographyVisualiser/imageDownloader.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TypographyVisualiser/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/TypographyVisualiser/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TypographyVisualiser/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/TypographyVisualiser/templates/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TypographyVisualiser/templates/settings.html" beforeDir="false" afterPath="$PROJECT_DIR$/TypographyVisualiser/templates/settings.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -42,6 +36,7 @@
       <list>
         <option value="HTML File" />
         <option value="JavaScript File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -137,6 +132,7 @@
       <workItem from="1591267370557" duration="7951000" />
       <workItem from="1591275504011" duration="12618000" />
       <workItem from="1591443866648" duration="3410000" />
+      <workItem from="1591554049941" duration="1349000" />
     </task>
     <servers />
   </component>
@@ -159,10 +155,10 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1591284538255">
+    <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1591554067996">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1591284538255" />
+    <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1591554067996" />
     <state x="707" y="375" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1590586670747">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -171,26 +167,26 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="92" y="92" width="1736" height="856" maximized="true" key="DiffContextDialog/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1591444979611" />
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1591447433465">
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1591554951967">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1591279733382" />
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1591447433465" />
-    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1591447433465">
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1591554951967" />
+    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1591554951966">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1591279733382" />
-    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1591447433465" />
-    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1591447433465">
+    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1591554951966" />
+    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1591554951966">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1591279733381" />
-    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1591447433465" />
-    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1591447433465">
+    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1591554951966" />
+    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1591554951967">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1591279733382" />
-    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1591447433465" />
+    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1591554951967" />
     <state x="461" y="165" key="SettingsEditor" timestamp="1591211704599">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -220,7 +216,17 @@
     </state>
     <state x="-1297" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1589384801101" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/TypographyVisualiser/imageDownloader.py</url>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/KommDes_TypographyVisualiser$main.coverage" NAME="main Coverage Results" MODIFIED="1591447433460" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/TypographyVisualiser" />
+    <SUITE FILE_PATH="coverage/KommDes_TypographyVisualiser$main.coverage" NAME="main Coverage Results" MODIFIED="1591554951961" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/TypographyVisualiser" />
   </component>
 </project>
