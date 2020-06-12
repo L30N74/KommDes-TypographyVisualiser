@@ -9,49 +9,59 @@
     <!-- Einbingung von Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
           integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/picture-selection.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/step1.css')}}">
+    <link href="../static/css/style.css" rel="stylesheet">
 </head>
 <body>
 <main>
     <div id="content header">
         <div class="stepper">
             <div class="step-one">
-                <img src="../static/icons/circle_1_active.svg" alt="Kreis mit einer eins">
-                <span class="active-circle-description">Bild aussuchen</span>
+                <div class="step-content">
+                    <img src="../static/icons/circle_1_active.svg" alt="Kreis mit einer eins">
+                    <p class="active-circle-description">Bild aussuchen</p>
+                </div>
             </div>
             <hr/>
             <div class="step-two">
-                <img src="../static/icons/circle_2_disabled.svg" alt="Kreis mit einer zwei">
-                <span class="disabled-circle-description">Schriftart und Farbe wählen</span>
+                <div class="step-content">
+                    <img src="../static/icons/circle_2_disabled.svg" alt="Kreis mit einer zwei">
+                    <p class="disabled-circle-description">Schriftart und Farbe wählen</p>
+                </div>
             </div>
             <hr/>
             <div class="step-three">
-                <img src="../static/icons/circle_3_disabled.svg" alt="Kreis mit einer drei">
-                <span class="disabled-circle-description">Endergebnis herunterladen</span>
+                <div class="step-content">
+                    <img src="../static/icons/circle_3_disabled.svg" alt="Kreis mit einer drei">
+                    <p class="disabled-circle-description">Endergebnis herunterladen</p>
+                </div>
             </div>
         </div>
-        <p id="log" class="page-description">Hier können Sie nach Bilder suchen und eines aussuchen. Bitte geben sie
-            sowohl ein Suchwort als auch die Anzahl der Bilder ein aus dennen Sie ien Bild aussuchen können.
-        </p>
-        <form method="post" id="form">
-            <div class="form-container">
-                <div class="label-input">
-                    <label for="searchbar">Suchbegriff</label>
-                    <input type="text" id="searchbar" class="form-control search-bar" placeholder="z.B. Katze"/>
+        <div class="form">
+            <p id="log" class="page-description">Hier können Sie nach Bilder suchen und eines aussuchen. Bitte geben sie
+                sowohl ein Suchwort als auch die Anzahl der Bilder ein aus dennen Sie ien Bild aussuchen können.
+            </p>
+            <form method="post" id="form">
+                <div class="form-container">
+                    <div class="label-input">
+                        <label for="searchbar">Suchbegriff</label>
+                        <input type="text" id="searchbar" class="form-control search-bar" placeholder="z.B. Katze"/>
+                    </div>
+                    <div class="label-input">
+                        <label for="imageAmount">Anzahl der angezeigten Bilder</label>
+                        <input type="number" id="imageAmount" class="form-control"/>
+                    </div>
+                    <button class="btn btn-success search-button" type="submit" value="Suchen">Suchen</button>
                 </div>
-                <div class="label-input">
-                    <label for="imageAmount">Anzahl der angezeigten Bilder</label>
-                    <input type="number" id="imageAmount" class="form-control"/>
-                </div>
-                <button class="btn btn-success search-button" type="submit" value="Suchen">Suchen</button>
-            </div>
-        </form>
-    </div>
+            </form>
+        </div>
 
-    <section id="images">
-        <p>Bilder: </p>
-    </section>
-    <button class="btn btn-primary next-button" id="redirect-step-2">Weiter zum nächsten Schritt</button>
+        <section id="images">
+            <p>Bilder: </p>
+        </section>
+        <button class="btn btn-primary next-button" id="redirect-step-2">Weiter zum nächsten Schritt</button>
+
+    </div>
 </main>
 <script>
     let chosenImages = [];
@@ -62,7 +72,7 @@
         let amount = $('#imageAmount').val();
         //let color = $('#colorPicker').val();
         event.preventDefault();
-                                                       // Standard HTML form-post unterbrechen, da wir ajax nutzen
+        // Standard HTML form-post unterbrechen, da wir ajax nutzen
         $.ajax({
             url: "/DownloadImages",                                             // Ziel festlegen (in main.py als app.route gesetzt)
             data: {'keyword': keyword, 'amount': amount},                       // Nutzereingabe einpacken

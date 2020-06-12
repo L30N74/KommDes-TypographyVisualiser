@@ -1,3 +1,73 @@
+* {
+
+}
 #logstep3{
     color: red;
+}
+/* General */
+main {
+    padding: 3% 5% 3% 5%;
+}
+
+.page-description {
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+.next-button {
+    position: absolute;
+    bottom: 10%;
+    right: 2%;
+}
+
+/* Animation */
+@keyframes buttons {
+    0%{ opacity: 0 }
+    100% { opacity: 1 }
+}
+.form {
+    animation-name: buttons;
+    animation-duration: 3s;
+}
+
+/* Stepper*/
+.stepper {
+    display: flex;
+    padding: 0 5% 0 5%;
+    justify-content: center;
+    align-items: center;
+}
+hr {
+    border-top: 1px solid;
+    width: 13vw
+}
+.active-circle-description {
+    color: #297DFC;
+    font-weight: bold;
+}
+.disabled-circle-description, .active-circle-description {
+    margin: 0 3% 0 3%;
+    text-align: center;
+    font-size: 1.1vw;
+    width: 100px;
+}
+.step-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+/* Footer */
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+
+    background: #666666;
+}
+footer span {
+    color: whitesmoke;
+}
+footer .version {
+   font-size: 2vw;
 }

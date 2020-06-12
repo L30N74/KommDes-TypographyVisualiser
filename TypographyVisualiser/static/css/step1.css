@@ -1,0 +1,24 @@
+/* From */
+.search-bar {
+    width: 100%;
+}
+label {
+    font-weight: bold;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.label-input {
+    display: flex;
+    flex-direction: column;
+    padding-right: 5%;
+}
+.search-button {
+    height: 100%;
+    margin-top: 1%;
+}
+
+
