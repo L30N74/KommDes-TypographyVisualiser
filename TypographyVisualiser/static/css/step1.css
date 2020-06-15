@@ -21,4 +21,22 @@ label {
     margin-top: 1%;
 }
 
+/* Images */
+#images {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.image-container {
+    width: 500vh;
+}
+.image-container > img {
+    min-height: 20%;
+    min-width: 20%;
+}
+.checkbox-for-images {
+
+}
+
 

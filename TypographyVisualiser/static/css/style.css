@@ -14,7 +14,7 @@ main {
     margin-bottom: 1%;
 }
 .next-button {
-    position: absolute;
+    position: fixed;
     bottom: 10%;
     right: 2%;
 }
@@ -44,7 +44,7 @@ hr {
     color: #297DFC;
     font-weight: bold;
 }
-.disabled-circle-description, .active-circle-description {
+.inactive-circle-description, .active-circle-description {
     margin: 0 3% 0 3%;
     text-align: center;
     font-size: 1.1vw;
@@ -59,7 +59,7 @@ hr {
 /* Footer */
 
 footer {
-    position: absolute;
+    position: fixed;
     bottom: 0;
     width: 100%;
 

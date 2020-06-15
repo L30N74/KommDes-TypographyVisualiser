@@ -25,15 +25,15 @@
             <hr/>
             <div class="step-two">
                 <div class="step-content">
-                    <img src="../static/icons/circle_2_disabled.svg" alt="Kreis mit einer zwei">
-                    <p class="disabled-circle-description">Schriftart und Farbe wählen</p>
+                    <img src="../static/icons/circle_2_inactive.svg" alt="Kreis mit einer zwei">
+                    <p class="inactive-circle-description">Schriftart und Farbe wählen</p>
                 </div>
             </div>
             <hr/>
             <div class="step-three">
                 <div class="step-content">
-                    <img src="../static/icons/circle_3_disabled.svg" alt="Kreis mit einer drei">
-                    <p class="disabled-circle-description">Endergebnis herunterladen</p>
+                    <img src="../static/icons/circle_3_inactive.svg" alt="Kreis mit einer drei">
+                    <p class="inactive-circle-description">Endergebnis herunterladen</p>
                 </div>
             </div>
         </div>
@@ -68,10 +68,11 @@
 <script>
     let chosenImages = [];
     let keyword = "";
+    let amount;
 
     $('#form').on('submit', event => {
         keyword = $('#searchbar').val();                                        // Inhalte der Eingabefelder zwischenspeichern
-        let amount = $('#imageAmount').val();
+        amount = $('#imageAmount').val();
         //let color = $('#colorPicker').val();
         event.preventDefault();
         // Standard HTML form-post unterbrechen, da wir ajax nutzen
@@ -87,12 +88,14 @@
                 // Für jedes runtergeladene Bild soll jetzt ein img-tag erstellt
                 // und das src-Attribut mit dem Pfad zum Bild gefült werden
                 // TODO: Pfad schöner zusammenbinden
-                for (let i = 0; i < data.amount; i++) {
+                $(".search-result-images").remove();
+                $(".checkbox-for-images").remove();
+                for (let i = 0; i < amount; i++) {
                     let filename = `../static/images/${keyword}/${keyword}-${i.toString()}.jpg`;
 
-                    let newImage = $("<img>").attr({"src": filename, "class": "searchResult img_" + i});
+                    let newImage = $("<img>").attr({"src": filename, "class": "search-result-images img_" + i});
 
-                    let checkbox = $("<input>").attr({"type": "checkbox", "class": "checkboxForImage form-check-input" + i, "value": false})
+                    let checkbox = $("<input>").attr({"type": "checkbox", "class": "checkbox-for-images form-check-input" + i, "value": false})
                     newImage.click(event => {
                         // Check setzten
                         if(checkbox.val() === "true") {
@@ -116,8 +119,9 @@
                         chosenImages.push(filename);
                     }
                     // Auf Webseite darstellen
-                    newImage.appendTo("#images");
-                    checkbox.appendTo('#images');
+                    $("<div>").attr({"class": "image-container", "id": "image" + i}).appendTo('#images');
+                    checkbox.appendTo("#image" +i);
+                    newImage.appendTo("#image" +i);
                 }
             })
     });
