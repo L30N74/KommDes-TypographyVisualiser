@@ -48,8 +48,11 @@
         </form>
     </div>
 
-    <section id="images">
+    <section>
         <p>Bilder: </p>
+        <div id="images">
+
+        </div>
     </section>
     <button class="btn btn-primary next-button" id="redirect-step-2">Weiter zum nächsten Schritt</button>
 </main>
@@ -78,17 +81,34 @@
                 for (let i = 0; i < data.amount; i++) {
                     let filename = `../static/images/${keyword}/${keyword}-${i.toString()}.jpg`;
 
-                    let newImage = $("<img>").attr({"src": filename, "class": "img_selected"});
+                    let newImage = $("<img>").attr({"src": filename, "class": "searchResult img_" + i});
+
+                    let checkbox = $("<input>").attr({"type": "checkbox", "class": "checkboxForImage form-check-input" + i, "value": false})
                     newImage.click(event => {
-                        // Umrandung
-                        newImage.css("box-shadow", "5px 5px #ffa0ff");
-
-                        // Zu Liste ausgewählter Bilder hinzufügen
-                        chosenImages.push(filename);
+                        // Check setzten
+                        if(checkbox.val() === "true") {
+                         checkbox.val(false);
+                         checkbox.prop("checked",false);
+                        } else {
+                            checkbox.val(true);
+                            checkbox.prop("checked",true);
+                        }
                     })
-
+                    checkbox.click( event => {
+                        console.log(checkbox.val());
+                        if(checkbox.val() === "true") {
+                         checkbox.val(false);
+                        } else {
+                            checkbox.val(true);
+                        }
+                    })
+                    // Zu Liste ausgewählter Bilder hinzufügen
+                    if(checkbox.checked === true ) {
+                        chosenImages.push(filename);
+                    }
                     // Auf Webseite darstellen
                     newImage.appendTo("#images");
+                    checkbox.appendTo('#images');
                 }
             })
     });
