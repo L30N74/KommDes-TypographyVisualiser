@@ -16,34 +16,43 @@
     <div id="content header">
         <div class="stepper">
             <div class="step-one">
-                <img src="../static/icons/circle_1_inactive.svg" alt="Kreis mit einer eins">
-                <span class="disabled-circle-description">Bild aussuchen</span>
+                <div class="step-content">
+                    <img src="../static/icons/circle_1_active.svg" alt="Kreis mit einer eins">
+                    <p class="active-circle-description">Bild aussuchen</p>
+                </div>
             </div>
             <hr/>
             <div class="step-two">
-                <img src="../static/icons/circle_2_disabled.svg" alt="Kreis mit einer zwei">
-                <span class="disabled-circle-description">Schriftart und Farbe wählen</span>
+                <div class="step-content">
+                    <img src="../static/icons/circle_2_disabled.svg" alt="Kreis mit einer zwei">
+                    <p class="disabled-circle-description">Schriftart und Farbe wählen</p>
+                </div>
             </div>
             <hr/>
             <div class="step-three">
-                <img src="../static/icons/circle_3_active.svg" alt="Kreis mit einer drei">
-                <span class="active-circle-description">Endergebnis herunterladen</span>
-            </div>
-        </div>
-        <p id="logstep3" class="page-description">Glückwunsch!
-            Ein Meisterwerk!
-        </p>
-        <form method="post" id="form">
-            <div class="row">
-                <div class="col-md-4">
-                    <section id="image">
-                        <p>Bild</p>
-
-                    </section>
-                    <button class="btn btn-primary next-button" id="redirect-step-1">Nächstes Kunstwerk</button>
+                <div class="step-content">
+                    <img src="../static/icons/circle_3_disabled.svg" alt="Kreis mit einer drei">
+                    <p class="disabled-circle-description">Endergebnis herunterladen</p>
                 </div>
             </div>
-        </form>
+        </div>
+        <div class="form">
+
+            <p id="logstep3" class="page-description">Glückwunsch!
+                Ein Meisterwerk!
+            </p>
+            <form method="post" id="form">
+                <div class="row">
+                    <div class="col-md-4">
+                        <section id="image">
+                            <p>Bild</p>
+
+                        </section>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <button class="btn btn-primary next-button" id="redirect-step-1">Nächstes Kunstwerk</button>
     </div>
 </main>
 <footer>
