@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <title>Home</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <!-- &lt;!&ndash; In Flask müssen css Dateien in dem Ordner static sein. Hier wird dann die Referenz gelegt &ndash;&gt; -->
+    <title>Konfiguration</title>
 
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="{{ url_for('static', filename='js/step2.js') }}" defer></script>
+
     <!-- Color Picker -->
     <script src="https://cdn.jsdelivr.net/npm/spectrum-colorpicker2@2.0.0/dist/spectrum.min.js"></script>
     <link rel="stylesheet" type="text/css"
@@ -111,44 +111,6 @@
     <span class="version">Version 1</span>
     <span>Ein Projekt im Rahmen des Kommunikations Designs Modules 2020 der HSD Jasmin Eßer, Leon Krüger, Niklas Turk und Angela Lisse</span>
 </footer>
-
-<script>
-    document.getElementById("rangevalue_low").value = document.getElementById("thresh_low").value;
-    document.getElementById("rangevalue_high").value = document.getElementById("thresh_high").value;
-
-    function render() {
-        let range_low = document.getElementById("rangevalue_low").value;
-        let range_high = document.getElementById("rangevalue_high").value;
-
-            $.ajax({
-                url: "/Contours",
-                data: {
-                    'imagePath': 'static/images/kitten/kitten-2.jpg',
-                    'thresh_low': range_low,
-                    'thresh_high': range_high
-                },
-                method: 'POST'
-            })
-            .done(() => {
-                // Ladeanimation abspielen
-                $("#outlined_image").attr("src", "");
-
-                setTimeout(() => {
-                    let source = "../static/output/result.jpg?" + (new Date()).getTime();   // Um caching des Bildes zu verhindern, wird ein timestamp mitgegeben
-                    $("#outlined_image").attr({"src": source, "class": "img_result"});
-                }, 2000)
-
-            })
-    }
-
-    $("#redirect-step-3").on("click", event => {
-        event.preventDefault();
-        window.location.href = "/Finish"
-    })
-    $('#color-picker').spectrum({
-        type: "color"
-    });
-</script>
 
 </body>
 </html>

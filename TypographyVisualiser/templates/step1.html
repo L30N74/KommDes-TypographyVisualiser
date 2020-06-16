@@ -2,15 +2,14 @@
 <html lang="de">
 <head>
     <title>Home</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <!-- &lt;!&ndash; In Flask müssen css Dateien in dem Ordner static sein. Hier wird dann die Referenz gelegt &ndash;&gt; -->
 
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="{{ url_for('static', filename="js/step1.js") }}" defer></script>
+
     <!-- Einbingung von Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
           integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/step1.css')}}">
-    <link href="../static/css/style.css" rel="stylesheet">
 </head>
 <body>
 <main>
@@ -65,80 +64,11 @@
     <button class="btn btn-primary next-button" id="redirect-step-2">Weiter zum nächsten Schritt</button>
     </div>
 </main>
-<script>
-    let chosenImages = [];
-    let keyword = "";
-    let amount;
 
-    $('#form').on('submit', event => {
-        keyword = $('#searchbar').val();                                        // Inhalte der Eingabefelder zwischenspeichern
-        amount = $('#imageAmount').val();
-        //let color = $('#colorPicker').val();
-        event.preventDefault();
-        // Standard HTML form-post unterbrechen, da wir ajax nutzen
-        $.ajax({
-            url: "/DownloadImages",                                             // Ziel festlegen (in main.py als app.route gesetzt)
-            data: {'keyword': keyword, 'amount': amount},                       // Nutzereingabe einpacken
-            method: 'POST'
-        })
-            .done(data => {                                                         // Was soll passieren, wenn search() zuende ist
-                //window.location.href = "/Settings";
-
-                // Anzahl an Bildern bekommen wir am Ende des downloads mitgeteilt.
-                // Für jedes runtergeladene Bild soll jetzt ein img-tag erstellt
-                // und das src-Attribut mit dem Pfad zum Bild gefült werden
-                // TODO: Pfad schöner zusammenbinden
-                $(".search-result-images").remove();
-                $(".checkbox-for-images").remove();
-                for (let i = 0; i < amount; i++) {
-                    let filename = `../static/images/${keyword}/${keyword}-${i.toString()}.jpg`;
-
-                    let newImage = $("<img>").attr({"src": filename, "class": "search-result-images img_" + i});
-
-                    let checkbox = $("<input>").attr({"type": "checkbox", "class": "checkbox-for-images form-check-input" + i, "value": false})
-                    newImage.click(event => {
-                        // Check setzten
-                        if(checkbox.val() === "true") {
-                         checkbox.val(false);
-                         checkbox.prop("checked",false);
-                        } else {
-                            checkbox.val(true);
-                            checkbox.prop("checked",true);
-                        }
-                    })
-                    checkbox.click( event => {
-                        console.log(checkbox.val());
-                        if(checkbox.val() === "true") {
-                         checkbox.val(false);
-                        } else {
-                            checkbox.val(true);
-                        }
-                    })
-                    // Zu Liste ausgewählter Bilder hinzufügen
-                    if(checkbox.checked === true ) {
-                        chosenImages.push(filename);
-                    }
-                    // Auf Webseite darstellen
-                    $("<div>").attr({"class": "image-container", "id": "image" + i}).appendTo('#images');
-                    checkbox.appendTo("#image" +i);
-                    newImage.appendTo("#image" +i);
-                }
-            })
-    });
-
-    // redirect funktioniert aus unbekannten Gründen nicht.
-    // Wenn das selbe oben aufgerufen wird, gehts
-    $('#redirect-step-2').on('click', event => {
-        event.preventDefault();
-
-
-
-        window.location.href = "/Settings";
-    })
-</script>
 <footer>
     <span class="version">Version 1</span>
-    <span>Ein Projekt im Rahmen des Kommunikations Designs Modules 2020 der HSD Jasmin Eßer, Leon Krüger, Niklas Turk und Angela Lisse</span>
+    <span class="projectbasis">Ein Projekt im Rahmen des Kommunikations-Design-Modules 2020 der HSD</span>
+    <span class="namen">Jasmin Eßer, Leon Krüger, Niklas Tluk und Angela Lisse</span>
 </footer>
 </body>
 </html>

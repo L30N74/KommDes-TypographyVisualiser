@@ -2,14 +2,14 @@
 <html lang="de">
 <head>
     <title>Home</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <!-- &lt;!&ndash; In Flask müssen css Dateien in dem Ordner static sein. Hier wird dann die Referenz gelegt &ndash;&gt; -->
 
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="{{ url_for('static', filename='js/step3.js') }}" defer></script>
+
     <!-- Einbingung von Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
           integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/picture-selection.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}">
 </head>
 <body>
 <main>
@@ -59,12 +59,5 @@
     <span class="version">Version 1</span>
     <span>Ein Projekt im Rahmen des Kommunikations Designs Modules 2020 der HSD Jasmin Eßer, Leon Krüger, Niklas Turk und Angela Lisse</span>
 </footer>
-
-<script>
-    $("#redirect-step-1").on("click", event => {
-        event.preventDefault();
-        window.location.href = "/Start"
-    })
-</script>
 </body>
 </html>
