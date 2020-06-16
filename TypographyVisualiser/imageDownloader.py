@@ -1,6 +1,8 @@
 import os
 import cv2
 import urllib
+import shutil
+import json
 import numpy
 import requests
 from bs4 import BeautifulSoup
@@ -50,9 +52,7 @@ def download(searchQuery, html, imageAmount):
         parts = seperates[3].split('"')
         imageLinks.append(parts[1])
 
-    imageFolder = "static/images/" + searchQuery
-    if not os.path.exists(imageFolder):
-        os.mkdir(imageFolder)
+    imageFolder = os.path.join("static/images/")
 
     # Download image
     for url in imageLinks:
@@ -73,3 +73,34 @@ def urlToImage(url):
 
     # return the image
     return image
+
+
+@imageDownloader.route("/delete", methods=['POST'])
+def removeUnwantedImages():
+    wantedImages = json.loads(request.form.get("wantedImages"))
+    wantedImages_formattedPaths = []
+
+    for path in wantedImages:
+        split = path.split("/")
+        wantedImages_formattedPaths.append(split[3])
+
+    imageFolder = "static/images/"
+
+    removeList = [file for file in os.listdir(imageFolder) if file not in wantedImages_formattedPaths]
+    for path in removeList:
+        os.remove(os.path.join(imageFolder, path))
+
+    return "Nothing"
+
+
+@imageDownloader.route("/resetFolders", methods=["POST"])
+def resetFolders():
+    imagePath = "static/images/"
+    for file in os.listdir(imagePath):
+        os.remove(os.path.join(imagePath, file))
+
+    outputPath = "static/output/"
+    for image in os.listdir(outputPath):
+        os.remove(os.path.join(outputPath, image))
+
+    return "Nothing"

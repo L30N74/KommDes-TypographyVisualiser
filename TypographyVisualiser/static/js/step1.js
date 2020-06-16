@@ -14,42 +14,38 @@ $('#form').on('submit', event => {
         method: 'POST'
     })
     .done(data => {                                                         // Was soll passieren, wenn search() zuende ist
-        //window.location.href = "/Settings";
 
-        // Anzahl an Bildern bekommen wir am Ende des downloads mitgeteilt.
-        // Für jedes runtergeladene Bild soll jetzt ein img-tag erstellt
-        // und das src-Attribut mit dem Pfad zum Bild gefült werden
-        // TODO: Pfad schöner zusammenbinden
         $(".search-result-images").remove();
         $(".checkbox-for-images").remove();
+
         for (let i = 0; i < amount; i++) {
-            let filename = `../static/images/${keyword}/${keyword}-${i.toString()}.jpg`;
+            let filename = `../static/images/${keyword}-${i.toString()}.jpg`;
 
             let newImage = $("<img>").attr({"src": filename, "class": "search-result-images img_" + i});
-
-            let checkbox = $("<input>").attr({"type": "checkbox", "class": "checkbox-for-images form-check-input" + i, "value": false})
             newImage.click(event => {
-                // Check setzten
+                // Check setzen
                 if(checkbox.val() === "true") {
                  checkbox.val(false);
                  checkbox.prop("checked",false);
+                 addOrRemoveImageSelection(filename, false);
                 } else {
                     checkbox.val(true);
                     checkbox.prop("checked",true);
+                    addOrRemoveImageSelection(filename, true);
                 }
             })
+
+            let checkbox = $("<input>").attr({"type": "checkbox", "class": "checkbox-for-images form-check-input" + i, "value": false})
             checkbox.click( event => {
-                console.log(checkbox.val());
                 if(checkbox.val() === "true") {
                  checkbox.val(false);
+                 addOrRemoveImageSelection(filename, false)
                 } else {
                     checkbox.val(true);
+                    addOrRemoveImageSelection(filename, true)
                 }
             })
-            // Zu Liste ausgewählter Bilder hinzufügen
-            if(checkbox.checked === true ) {
-                chosenImages.push(filename);
-            }
+
             // Auf Webseite darstellen
             $("<div>").attr({"class": "image-container", "id": "image" + i}).appendTo('#images');
             checkbox.appendTo("#image" +i);
@@ -61,7 +57,22 @@ $('#form').on('submit', event => {
 $('#redirect-step-2').on('click', event => {
     event.preventDefault();
 
-
-
-    window.location.href = "/Settings";
+    location.href = "/Settings"
+    
+    $.ajax({
+        url: "/delete",
+        data: {'query': keyword, 'wantedImages': JSON.stringify(chosenImages)},
+        method: 'POST'
+    })
 })
+
+
+function addOrRemoveImageSelection(filename, add){
+    if(add){
+        chosenImages.push(filename);
+    }
+    else {
+        //Filter das Bild mit dem mitgelieferten filename aus
+        chosenImages = chosenImages.filter(value => value !== filename);
+    }
+}

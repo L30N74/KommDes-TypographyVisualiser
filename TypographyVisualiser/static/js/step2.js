@@ -8,19 +8,32 @@ function render() {
     $.ajax({
         url: "/Contours",
         data: {
-            'imagePath': 'static/images/kitten/kitten-2.jpg',
             'thresh_low': range_low,
             'thresh_high': range_high
         },
         method: 'POST'
     })
-    .done(() => {
+    .done(data => {
+        // read imagepaths from data into list
+        let stringRep = data
+        let parts = stringRep.split("\"");
+
+        let filepaths = [];
+        for(let i = 0; i < parts.length; i++){
+            if(i % 2 != 0)
+                filepaths.push(parts[i]);
+        }
+
         // Ladeanimation abspielen
-        $("#outlined_image").attr("src", "");
+        $("#image").empty();
 
         setTimeout(() => {
-            let source = "../static/output/result.jpg?" + (new Date()).getTime();   // Um caching des Bildes zu verhindern, wird ein timestamp mitgegeben
-            $("#outlined_image").attr({"src": source, "class": "img_result"});
+            for (let path of filepaths){
+                let imageSource = `${path}?${(new Date()).getTime()}`;
+                let newImage = $("<img />").attr({"src": imageSource, "class": "img-result"});
+
+                $("#image").append(newImage);
+            }
         }, 2000)
 
     })
@@ -30,6 +43,7 @@ $("#redirect-step-3").on("click", event => {
     event.preventDefault();
     window.location.href = "/Finish"
 })
+
 $('#color-picker').spectrum({
     type: "color"
 });
