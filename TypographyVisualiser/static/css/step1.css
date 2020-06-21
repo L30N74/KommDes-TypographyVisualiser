@@ -24,21 +24,91 @@ label {
 }
 
 /* Images */
+
+/*container um die cards*/
 #images {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
 }
-
+/*card*/
 .image-container {
-    width: 500vh;
+    position: relative;
+    background: rgba(0,0,0,0.61);
 }
 .image-container > img {
-    min-height: 20%;
-    min-width: 20%;
+    min-height: 30%;
+    min-width: 30%;
 }
-.checkbox-for-images {
-
+/*einzelne images*/
+.search-result-images {
+    max-width: 100%;
+    display: block;
+    transition: opacity ease-out 250ms;
+}
+.image-container:hover .search-result-images{
+    opacity: 0.7;
+}
+.image-container:hover .hover-text{
+    opacity: 1;
+}
+.image-container::after, .image-container::before {
+    content:'';
+    position: absolute;
+    top: 5px;
+    bottom: 5px;
+    left: 5px;
+    right: 5px;
+}
+.image-container::before {
+    transform: scale(0,1);
+    transition: transform ease-out 250ms;
+    border-top: 1px solid #5AF233;
+    border-bottom: 1px solid #5AF233;
+}
+.image-container::after {
+    transform: scale(1,0);
+    transition: transform ease-out 250ms;
+    border-left: 1px solid #5AF233;
+    border-right: 1px solid #5AF233;
+}
+.image-container:hover::after {
+    transform: scale(1,1);
+}
+.image-container:hover::before {
+    transform: scale(1,1);
+}
+.done-icon {
+    width: 60%;
 }
 
+.hover-text {
+    position: absolute;
+    top: 50%;
+    left: 60%;
+    transform: translate(-50%,-50%);
+    opacity: 0;
+    transition: opacity ease-out 250ms;
+}
+.select-text {
+    position: absolute;
+    top: 50%;
+    left: 60%;
+    transform: translate(-50%,-50%);
+    opacity: 0;
+    transition: opacity ease-out 250ms;
+}
 
+#checkbox[type="checkbox"] {
+  display:none;
+}
+#checkbox[type="checkbox"] + label::before {
+  background-image: url('../icons/done_green.svg');
+  display: block;
+  content: "";
+  float: left;
+  margin-right: 5px;
+}
+#checkbox[type="checkbox"]:checked+label::before {
+  background-image: url("../icons/done_green.svg");
+}

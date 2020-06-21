@@ -17,6 +17,9 @@ $('#form').on('submit', event => {
 
         $(".search-result-images").remove();
         $(".checkbox-for-images").remove();
+        $(".image-container").remove();
+        $(".text").remove();
+        $(".done-icon").remove();
 
         for (let i = 0; i < amount; i++) {
             let filename = `../static/images/${keyword}-${i.toString()}.jpg`;
@@ -28,10 +31,12 @@ $('#form').on('submit', event => {
                  checkbox.val(false);
                  checkbox.prop("checked",false);
                  addOrRemoveImageSelection(filename, false);
+                 $("<img>").attr({"class":"selected-done-icon", "src": "../static/icons/done_green.svg"}).appendTo('#text' +i);
                 } else {
                     checkbox.val(true);
                     checkbox.prop("checked",true);
                     addOrRemoveImageSelection(filename, true);
+                    $(".selected-done-icon").remove();
                 }
             })
 
@@ -48,8 +53,12 @@ $('#form').on('submit', event => {
 
             // Auf Webseite darstellen
             $("<div>").attr({"class": "image-container", "id": "image" + i}).appendTo('#images');
-            checkbox.appendTo("#image" +i);
+            // checkbox.appendTo("#image" +i);
             newImage.appendTo("#image" +i);
+            $("<div>").attr({"class": "hover-text", "id": "text" + i}).appendTo('#image' + i);
+            $("<img>").attr({"class":"done-icon", "src": "../static/icons/done_green.svg"}).appendTo('#text' +i);
+            //$("<input>").attr( {"id": "checkbox", "type": "checkbox", "value":"false"}).appendTo('#text' +i);;
+            //$("<label>").attr( {"for": "checkbox"}).appendTo('#text' +i);
         }
     })
 });
