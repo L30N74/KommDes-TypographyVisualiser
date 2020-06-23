@@ -39,26 +39,19 @@ $('#form').on('submit', event => {
                     $(".selected-done-icon").remove();
                 }
             })
-
+            //$("#text"+i).attr({"style":"opacity:1;"});
             //let checkbox = $("<input>").attr({"type": "checkbox", "class": "checkbox-for-images form-check-input" + i, "value": false})
             let checkbox = $("<input>").attr( {"id": "checkbox-as-image" + i, "type": "checkbox", "value":"false", "name":"test"});
-            checkbox.click( event => {
-                if(checkbox.val() === "true") {
-                 checkbox.val(false);
-                 addOrRemoveImageSelection(filename, false)
-                } else {
-                    checkbox.val(true);
-                    addOrRemoveImageSelection(filename, true)
-                }
-            })
             let imageContainer = $("<div>").attr({"class": "image-container", "id": "image" + i});
             imageContainer.click( event => {
                 if(checkbox.val() === "true") {
                  checkbox.val(false);
-                 addOrRemoveImageSelection(filename, false)
+                 $("#text"+i).attr({"style":"opacity:0;"});
+                 addOrRemoveImageSelection(filename, false);
                 } else {
                     checkbox.val(true);
-                    addOrRemoveImageSelection(filename, true)
+                    $("#text"+i).attr({"style":"opacity:1;"});
+                    addOrRemoveImageSelection(filename, true);
                 }
             })
             // Auf Webseite darstellen
@@ -94,5 +87,6 @@ function addOrRemoveImageSelection(filename, add){
     else {
         //Filter das Bild mit dem mitgelieferten filename aus
         chosenImages = chosenImages.filter(value => value !== filename);
+
     }
 }

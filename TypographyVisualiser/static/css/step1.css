@@ -34,7 +34,7 @@ label {
 /*card*/
 .image-container {
     position: relative;
-    background: rgba(0,0,0,0.61);
+    /*background: rgba(0,0,0,0.61);*/
 }
 .image-container > img {
     min-height: 30%;
@@ -48,9 +48,6 @@ label {
 }
 .image-container:hover .search-result-images{
     opacity: 0.7;
-}
-.image-container:hover .hover-text{
-    opacity: 1;
 }
 .image-container::after, .image-container::before {
     content:'';
@@ -86,16 +83,8 @@ label {
     position: absolute;
     top: 50%;
     left: 60%;
-    transform: translate(-50%,-50%);
     opacity: 0;
-    transition: opacity ease-out 250ms;
-}
-.select-text {
-    position: absolute;
-    top: 50%;
-    left: 60%;
     transform: translate(-50%,-50%);
-    opacity: 0;
     transition: opacity ease-out 250ms;
 }
 
