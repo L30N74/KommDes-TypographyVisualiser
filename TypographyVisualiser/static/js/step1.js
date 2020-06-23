@@ -40,7 +40,8 @@ $('#form').on('submit', event => {
                 }
             })
 
-            let checkbox = $("<input>").attr({"type": "checkbox", "class": "checkbox-for-images form-check-input" + i, "value": false})
+            //let checkbox = $("<input>").attr({"type": "checkbox", "class": "checkbox-for-images form-check-input" + i, "value": false})
+            let checkbox = $("<input>").attr( {"id": "checkbox-as-image" + i, "type": "checkbox", "value":"false", "name":"test"});
             checkbox.click( event => {
                 if(checkbox.val() === "true") {
                  checkbox.val(false);
@@ -50,15 +51,25 @@ $('#form').on('submit', event => {
                     addOrRemoveImageSelection(filename, true)
                 }
             })
-
+            let imageContainer = $("<div>").attr({"class": "image-container", "id": "image" + i});
+            imageContainer.click( event => {
+                if(checkbox.val() === "true") {
+                 checkbox.val(false);
+                 addOrRemoveImageSelection(filename, false)
+                } else {
+                    checkbox.val(true);
+                    addOrRemoveImageSelection(filename, true)
+                }
+            })
             // Auf Webseite darstellen
-            $("<div>").attr({"class": "image-container", "id": "image" + i}).appendTo('#images');
-            // checkbox.appendTo("#image" +i);
+            imageContainer.appendTo('#images');
             newImage.appendTo("#image" +i);
+            checkbox.appendTo("#image"+i);
             $("<div>").attr({"class": "hover-text", "id": "text" + i}).appendTo('#image' + i);
             $("<img>").attr({"class":"done-icon", "src": "../static/icons/done_green.svg"}).appendTo('#text' +i);
-            //$("<input>").attr( {"id": "checkbox", "type": "checkbox", "value":"false"}).appendTo('#text' +i);;
-            //$("<label>").attr( {"for": "checkbox"}).appendTo('#text' +i);
+            // $("<label>").attr( {"for": "checkbox-as-image" + i, "style":"background-image: url('" + filename + "'); background-repeat: no-repeat;"}).insertAfter('#checkbox-as-image' +i);
+            $("<label>").attr( {"for": "checkbox-as-image" + i}).insertAfter('#checkbox-as-image' +i);
+
         }
     })
 });

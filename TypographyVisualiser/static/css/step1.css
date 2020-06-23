@@ -99,16 +99,13 @@ label {
     transition: opacity ease-out 250ms;
 }
 
-#checkbox[type="checkbox"] {
+input[type="checkbox"] {
   display:none;
 }
-#checkbox[type="checkbox"] + label::before {
-  background-image: url('../icons/done_green.svg');
+input[type="checkbox"] + label {
   display: block;
   content: "";
   float: left;
   margin-right: 5px;
 }
-#checkbox[type="checkbox"]:checked+label::before {
-  background-image: url("../icons/done_green.svg");
-}
+
