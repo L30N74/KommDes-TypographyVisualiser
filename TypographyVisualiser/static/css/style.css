@@ -68,6 +68,16 @@ footer {
 footer span {
     color: whitesmoke;
 }
+/* Footer */
 footer .version {
    font-size: 2vw;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-around;
+}
+.description, .participants {
+    display: flex;
+    align-items: center;
 }

@@ -37,8 +37,10 @@ label {
     /*background: rgba(0,0,0,0.61);*/
 }
 .image-container > img {
-    min-height: 30%;
-    min-width: 30%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
 }
 /*einzelne images*/
 .search-result-images {
@@ -97,4 +99,3 @@ input[type="checkbox"] + label {
   float: left;
   margin-right: 5px;
 }
-
