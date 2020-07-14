@@ -2,12 +2,14 @@ from flask import Flask, render_template
 
 from imageDownloader import imageDownloader
 from contourCreator import contourCreator
+from contourFinder import contourFinder
 
 ##############################################
 
 app = Flask(__name__)
 app.register_blueprint(imageDownloader)
 app.register_blueprint(contourCreator)
+app.register_blueprint(contourFinder)
 
 
 @app.route('/')
