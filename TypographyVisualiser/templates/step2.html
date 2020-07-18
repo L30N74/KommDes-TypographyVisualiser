@@ -43,69 +43,69 @@
         </div>
     </div>
     <div class="form">
-        <p id="log" class="page-description">Hier können Sie einen Modus und eine Schriftfarbe auswählen.
+                <p id="log" class="page-description">Hier die kann das Bild nach Ihrem gefallen abstraktiert werden und eine Schriftfarbe auswählt werden.
         </p>
         <div class="row">
             <form method="post" id="form">
-                <div class="col-md-4">
-                    <label>Modusauswahl:</label>
+                <div class="left-container">
+                    <!-- <label>Modusauswahl:</label>
 
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="Radios" id="fill" value="option1"
-                                       checked>
-                                <label class="form-check-label" for="fill">Ausfüllen</label>
-                            </div>
+                             <div class="form-check">
+                                 <input class="form-check-input" type="radio" name="Radios" id="fill" value="option1"
+                                        checked>
+                                 <label class="form-check-label" for="fill">Ausfüllen</label>
+                             </div>
 
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="Radios" id="outline" value="option2">
-                                <label class="form-check-label" for="outline">Umranden</label>
-                            </div>
+                             <div class="form-check">
+                                 <input class="form-check-input" type="radio" name="Radios" id="outline" value="option2">
+                                 <label class="form-check-label" for="outline">Umranden</label>
+                             </div>
 
-                        <br>
-                        <div>
-                            <label for="outline">Filtereinstellungen:</label>
+                         <br>
+                         <div> -->
+                    <label for="outline">Filtereinstellungen:</label>
 
-                                    <div class="label-input">
-                                        <label for="outline">Obergrenze</label>
+                    <div class="label-input">
+                        <label for="outline">Obergrenze</label>
 
-                                        <input class="form-control" type="text" id="rangevalue_high"
-                                               onchange="thresh_high.value=value"/>
-                                        <input type="range"
-                                               id="thresh_high"
-                                               min="100"
-                                               max="400"
-                                               oninput="rangevalue_high.value=value"
-                                               onchange="render()">
-                                    </div>
-                                    <div class="label-input">
-                                        <label for="outline">Untergrenze</label>
-                                        <input class="form-control"
-                                               type="text"
-                                               id="rangevalue_low"
-                                               onchange="thresh_low.value=value"/>
-                                        <input type="range"
-                                               id="thresh_low"
-                                               min="10"
-                                               max="200"
-                                               oninput="rangevalue_low.value=value"
-                                               onchange="render()">
-                                    </div>
-                        </div>
-                        <br>
-
-                        <div class="color-pick">
-                            <label for="color-picker">Farbauswahl:</label>
-                                <form>
-                                    <input id="color-picker" value='#276cb8'/>
-                                </form>
-                        </div>
-
-                </div>
-                    <div class="col-md-4">
-                        <section id="image">
-
-                        </section>
+                        <input class="form-control" type="text" id="rangevalue_high"
+                               onchange="thresh_high.value=value"/>
+                        <input type="range"
+                               id="thresh_high"
+                               min="100"
+                               max="400"
+                               oninput="rangevalue_high.value=value"
+                               onchange="render()">
                     </div>
+                    <div class="label-input">
+                        <label for="outline">Untergrenze</label>
+                        <input class="form-control"
+                               type="text"
+                               id="rangevalue_low"
+                               onchange="thresh_low.value=value"/>
+                        <input type="range"
+                               id="thresh_low"
+                               min="10"
+                               max="200"
+                               oninput="rangevalue_low.value=value"
+                               onchange="render()">
+                    </div>
+                    <br>
+
+                    <div class="color-pick">
+                        <label for="color-picker">Farbauswahl:</label>
+                        <form>
+                            <input id="color-picker" value='#276cb8'/>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="image-container">
+                    <div class='loader'>loading</div>
+                    <section id="image">
+
+                    </section>
+                </div>
 
             </form>
 

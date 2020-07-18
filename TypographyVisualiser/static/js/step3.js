@@ -13,7 +13,7 @@ $.ajax({
     .done(data => {
         let resultImage = $("<img>").attr({"class": "img-result", "src": "../static/output/final-result-0.jpg"});
         resultImage.appendTo('#image')
-        $("<p>Test</p>").appendTo("#image")
+        $(".load-spinner").attr({"style": "display: none"})
 
     })
 

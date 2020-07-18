@@ -1,0 +1,52 @@
+.container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.headline-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.page-description {
+    font-weight: bold;
+    font-size: 2em;
+    color: #234D8B;
+}
+
+.img-result {
+    width: 420px;
+    height: 280px;
+}
+.party-icon {
+    width: 115px;
+    height: 105px;
+}
+
+/* Animation*/
+
+#surprise {
+    opacity: 1;
+    animation: ease surprise 1.5s 3;
+    transform-origin: center;
+}
+
+@keyframes surprise {
+     0%{ }
+    100% { opacity: 0 }
+}
+
+#spinner-circle {
+    animation: round 2s ease infinite;
+    transform-origin: center;
+}
+
+@keyframes round {
+    from{
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}

@@ -81,16 +81,3 @@ footer .version {
     display: flex;
     align-items: center;
 }
-
-/* Animation*/
-
-#surprise {
-    opacity: 1;
-    animation: ease surprise 1.5s 3;
-    transform-origin: center;
-}
-
-@keyframes surprise {
-     0%{ }
-    100% { opacity: 0 }
-}
