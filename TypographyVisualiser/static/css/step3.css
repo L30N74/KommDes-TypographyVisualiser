@@ -23,6 +23,14 @@
     width: 115px;
     height: 105px;
 }
+.buttons-container {
+    position: fixed;
+    bottom: 10%;
+    right: 2%;
+}
+#download-button {
+    display: none;
+}
 
 /* Animation*/
 
