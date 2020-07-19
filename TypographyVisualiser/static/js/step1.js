@@ -1,7 +1,10 @@
 let chosenImages = [];
 let keyword = "";
 let amount;
-
+$.ajax({
+    url: "/resetFolders",
+    method: 'POST'
+})
 $('#form').on('submit', event => {
     keyword = $('#searchbar').val();                                        // Inhalte der Eingabefelder zwischenspeichern
     amount = $('#imageAmount').val();
@@ -68,6 +71,9 @@ $('#form').on('submit', event => {
 });
 
 $('#redirect-step-2').on('click', event => {
+    keyword = $('#searchbar').val();
+    firstLetterOfKeyword = keyword.substring(0,1);
+    localStorage.setItem("keyword", firstLetterOfKeyword);
     event.preventDefault();
 
     location.href = "/Settings"

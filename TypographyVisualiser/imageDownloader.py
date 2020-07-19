@@ -95,12 +95,13 @@ def removeUnwantedImages():
 
 @imageDownloader.route("/resetFolders", methods=["POST"])
 def resetFolders():
+    print("rest start")
+    outputPath = "static/output/"
+    for image in os.listdir(outputPath):
+        os.remove(os.path.join(outputPath, image))
     imagePath = "static/images/"
     for file in os.listdir(imagePath):
         os.remove(os.path.join(imagePath, file))
 
-    outputPath = "static/output/"
-    for image in os.listdir(outputPath):
-        os.remove(os.path.join(outputPath, image))
-
+    print("reset end")
     return "Nothing"

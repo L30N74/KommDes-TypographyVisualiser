@@ -1,22 +1,19 @@
-import PIL
-import cv2
 import numpy as np
 
 from PIL import Image, ImageFont, ImageDraw
-import scipy.misc
-from flask import Blueprint, request, json
+from flask import Blueprint, request
 import matplotlib
 
 contourFinder = Blueprint("contourFinder", __name__, static_folder="static")
 
 
-@contourFinder.route("/Outline", methods=['GET'])
+@contourFinder.route("/Outline", methods=['POST'])
 def draw_outline():
     image_path = "static/output/result-0.jpg"
     background_image_path = "static/output/final-result-0.jpg"
     font_type = ImageFont.truetype('fonts/Roboto-Light.ttf', 20)
-    search_term = "H"
-    color = (255, 69, 0)
+    search_term = str(request.form.get('keyword'))
+    color = str(request.form.get('color'))
 
     image_template = Image.open(image_path)
     image_template = resize_image(image_template)
@@ -46,7 +43,7 @@ def draw_outline():
                 pixel = 0
 
             # else:
-                # print("nope")
+            # print("nope")
             # print(x)
 
             x = x + 1
@@ -77,9 +74,6 @@ def resize_image(img):
 def create_background_image():
     try:
         background_image_array = np.zeros((1080, 1920))
-        # background_image = Image.fromarray(background_image_array)
-        # background_image.save("final-result-0.jpg")
-        # scipy.misc.imsave('outfile.jpg', background_image_array)
         matplotlib.image.imsave('static/output/final-result-0.jpg', background_image_array)
         print("background finish")
     except Exception as e:

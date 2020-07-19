@@ -40,6 +40,8 @@ function render() {
 }
 
 $("#redirect-step-3").on("click", event => {
+    color = $('#color-picker').val();
+    localStorage.setItem("color", color);
     event.preventDefault();
     window.location.href = "/Finish"
 })
