@@ -29,7 +29,7 @@ Es wird empfohlen, python module in einer virtuellen Umgebung zu installieren.
 Das Programm [Anaconda][3] vereinfacht dieses Vorgehen.
 
 Ist Anaconda installiert, kann mit dem Kommandozeilen-Befehl 
-`conda create -n umgebungs_name python=<version von python --<version>` eine neue Umgebung erstellt 
+`conda create -n umgebungs_name python=<version von python --version>` eine neue Umgebung erstellt 
 
 z.B. `conda create -n Test python=3.8.1` 
 
