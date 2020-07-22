@@ -2,10 +2,8 @@
 <html lang="de">
 <head>
     <title>Home</title>
+    <meta http-equiv="expires" content="0">
     <!--  nur fuer Step 3 - kein cache vom Browser wegen final image-->
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="{{ url_for('static', filename='js/step3.js') }}" defer></script>
@@ -30,7 +28,7 @@
             <div class="step-two">
                 <div class="step-content">
                     <img src="../static/icons/circle_2_inactive.svg" alt="Kreis mit einer zwei">
-                    <p class="inactive-circle-description">Schriftart und Farbe wählen</p>
+                    <p class="inactive-circle-description">Filter und Farbe wählen</p>
                 </div>
             </div>
             <hr/>
